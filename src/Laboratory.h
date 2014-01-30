@@ -3,8 +3,9 @@
 
 #include "Camp.h"
 #include "Coordonate.h"
+#include "EnvironmentObstacle.h"
 
-class Laboratoire
+class Laboratory : public EnvironmentObstacle
 {
 	private:
 		Coordonate* m_coord;
@@ -13,7 +14,7 @@ class Laboratoire
 
 
 	public:
-		Laboratoire(Coordonate* coord,Camp* myCamp);
+		Laboratory(Coordonate* coord,Camp* myCamp,Map* map);
 		void craft();
 };
 

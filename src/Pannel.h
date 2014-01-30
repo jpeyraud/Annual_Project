@@ -9,15 +9,17 @@ namespace {
 	using std::string;
 }
 
-class Panneau: public EnvironmentObstacle
+class Pannel: public EnvironmentObstacle
 {
 	private:
 		string m_texte;
 		Coordonate* m_coord;
 
-	Panneau::Panneau(string text,Coordonate* coordone);
 
-	public: void afficher();
+
+	public:
+		void afficher();
+		Pannel(string text,Coordonate* coordone,Map* map);
 };
 
 #endif

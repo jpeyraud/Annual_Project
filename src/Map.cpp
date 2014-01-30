@@ -46,6 +46,9 @@ bool Map::load(const string& tileset, sf::Vector2u tileSize,  vector<int> tiles,
                 quad[3].texCoords = sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
             }
 
+        m_width=width;
+        m_height=height;
+        this->loadObstacle();
         return true;
     }
 
@@ -63,5 +66,23 @@ void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
        // et on dessine enfin le tableau de vertex
        target.draw(m_vertices, states);
    }
+
+void Map::loadObstacle(){
+	m_mapObstacle=new bool*[m_width];
+	for (int i=0;i<m_width;i++){
+		m_mapObstacle[i]=new bool[m_height];
+	}
+	for (int i=0;i<m_width;i++){
+		for (int j=0;j<m_height;j++){
+			m_mapObstacle[i][j]=0;
+		}
+	}
+}
+
+void Map::setObstacle(Coordonate *coord){
+	if(coord->getCoordonate()[0]<m_width && coord->getCoordonate()[1]<m_height){
+		m_mapObstacle[coord->getCoordonate()[0]][coord->getCoordonate()[1]]=1;
+	}
+}
 
 

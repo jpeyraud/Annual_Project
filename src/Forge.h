@@ -3,8 +3,9 @@
 
 #include "Coordonate.h"
 #include "Camp.h"
+#include "EnvironmentObstacle.h"
 
-class Forge
+class Forge : public EnvironmentObstacle
 {
 	private:
 		Coordonate* m_coord;
@@ -13,7 +14,7 @@ class Forge
 
 
 	public:
-		Forge(Coordonate* coord,Camp* myCamp);
+		Forge(Coordonate* coord,Camp* myCamp,Map* map);
 		void craft();
 };
 

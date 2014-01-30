@@ -2,11 +2,12 @@
 #define __Campement_h__
 
 #include "Coordonate.h"
+#include "EnvironmentObstacle.h"
 
-class Camp
+class Camp : public EnvironmentObstacle
 {
 	public:
-		Camp(Coordonate* coord);
+		Camp(Coordonate* coord,Map* map);
 
 	private :
 		Coordonate*	m_coord;

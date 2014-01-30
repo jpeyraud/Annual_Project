@@ -5,16 +5,17 @@
 #include "EnvironmentObstacle.h"
 #include "Coordonate.h"
 
-class Maison: public EnvironmentObstacle
+
+class House: public EnvironmentObstacle
 {
 	private:
 		Coordonate* m_coord;
 		int m_numSprite;
 		Camp* m_camp;
 
-	public: Maison(Coordonate* coord,Camp* myCamp);
-
-	public: void dormir();
+	public:
+		House(Coordonate* coord,Camp* myCamp,Map* map);
+		void dormir();
 };
 
 #endif

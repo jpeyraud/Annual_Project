@@ -7,7 +7,7 @@
 #include "Camp.h"
 #include <vector>
 
-class Reserve: public EnvironmentObstacle
+class Supply: public EnvironmentObstacle
 {
 	private:
 		Coordonate *m_coord;
@@ -16,7 +16,7 @@ class Reserve: public EnvironmentObstacle
 		int m_numSprite;
 
 	public:
-		Reserve(Coordonate* coord,Camp *myCamp);
+		Supply(Coordonate* coord,Camp *myCamp,Map* map);
 
 };
 
