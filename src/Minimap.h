@@ -1,0 +1,35 @@
+/*
+ * Minimap.h
+ *
+ *  Created on: 27 nov. 2013
+ *      Author: Utilisateur
+ */
+
+#ifndef MINIMAP_H_
+#define MINIMAP_H_
+
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <iostream>
+#include "Map.h"
+
+
+class Minimap
+{
+
+public:
+	Minimap(sf::Vector2u windowSize, sf::Vector2u visibility, float spawnX, float spawnY);
+	virtual ~Minimap();
+	void Move(float x, float y);
+	virtual void Draw(sf::RenderWindow* window, Map map);
+
+private:
+	sf::View vue;
+	sf::Texture textureminimap;
+	sf::RectangleShape sprite;
+
+};
+
+
+#endif /* MINIMAP_H_ */
