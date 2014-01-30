@@ -87,21 +87,21 @@ void Creature::move(sf::Keyboard::Key direction, float mvt){
 			switch (m_orientation)
 			{
 			case 3 :
-				setSprite(orientation);
-				orientation++;
+				setSprite(m_orientation);
+				m_orientation++;
 				break;
 			case 4:
 				setSprite(m_orientation);
-				orientation+=m_next;
+				m_orientation+=m_next;
 				m_next=-m_next;
 				break;
 			case 5:
 				setSprite(m_orientation);
-				orientation--;
+				m_orientation--;
 				break;
 			default:
 				setSprite(4);
-				orientation= 4+m_next;
+				m_orientation= 4+m_next;
 				m_next=-m_next;
 				break;
 			}
@@ -121,12 +121,12 @@ void Creature::move(sf::Keyboard::Key direction, float mvt){
 			switch (m_orientation)
 			{
 			case 6:
-				setSprite(orientation);
-				orientation++;
+				setSprite(m_orientation);
+				m_orientation++;
 				break;
 			case 7:
 				setSprite(m_orientation);
-				orientation+=m_next;
+				m_orientation+=m_next;
 				m_next=-m_next;
 				break;
 			case 8:
@@ -135,7 +135,7 @@ void Creature::move(sf::Keyboard::Key direction, float mvt){
 				break;
 			default:
 				setSprite(7);
-				orientation=7+m_next;
+				m_orientation=7+m_next;
 				m_next=-m_next;
 				break;
 			}
