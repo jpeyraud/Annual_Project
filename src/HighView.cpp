@@ -11,8 +11,8 @@
 HighView::HighView(sf::Vector2u visibility, float spawnX, float spawnY) {
 	sf::Vector2f ViewCenter(spawnX, spawnY);
 	sf::Vector2f ViewSize(visibility.x, visibility.y);
-	vuehaute.setCenter(ViewCenter);
-	vuehaute.setSize(ViewSize);
+	m_vuehaute.setCenter(ViewCenter);
+	m_vuehaute.setSize(ViewSize);
 	// TODO Auto-generated constructor stub
 
 }
@@ -22,12 +22,12 @@ HighView::~HighView() {
 }
 
 void HighView::Move(float x, float y){
-	vuehaute.move(x, y);
+	m_vuehaute.move(x, y);
 }
 
 void HighView::Draw(sf::RenderWindow* window, Map map)
 {
-	window->setView(vuehaute);
+	window->setView(m_vuehaute);
 
 	window->draw(map);
 }

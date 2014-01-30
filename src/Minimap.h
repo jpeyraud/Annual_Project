@@ -25,9 +25,9 @@ public:
 	virtual void Draw(sf::RenderWindow* window, Map map);
 
 private:
-	sf::View vue;
-	sf::Texture textureminimap;
-	sf::RectangleShape sprite;
+	sf::View m_vue;
+	sf::Texture m_textureminimap;
+	sf::RectangleShape m_sprite;
 
 };
 

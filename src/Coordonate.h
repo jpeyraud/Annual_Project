@@ -18,8 +18,8 @@ public :
 	void setCoordonate(int x,int y);
 
 private:
-	int _x;
-	int _y;
+	int m_x;
+	int m_y;
 
 };
 

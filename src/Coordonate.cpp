@@ -10,23 +10,23 @@
 
 
 Coordonate::Coordonate(int x,int y) {
-	_x = x;
-	_y = y;
+	m_x = x;
+	m_y = y;
 }
 
 Coordonate::Coordonate() {
-	_x = 0;
-	_y = 0;
+	m_x = 0;
+	m_y = 0;
 }
 
 int* Coordonate::getCoordonate() {
 	int* coord = new int[2];
-	coord[0]=_x;
-	coord[1]=_y;
+	coord[0]=m_x;
+	coord[1]=m_y;
 	return coord;
 }
 
 void Coordonate::setCoordonate(int x,int y) {
-	_x = x;
-	_y = y;
+	m_x = x;
+	m_y = y;
 }

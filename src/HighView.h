@@ -20,8 +20,8 @@ public:
 	void Draw(sf::RenderWindow* window, Map map);
 
 private:
-	sf::View vue;
-	sf::View vuehaute;
+	sf::View m_vue;
+	sf::View m_vuehaute;
 
 };
 

@@ -17,6 +17,7 @@
 #include <SFML/System.hpp>
 #include <fstream>
 #include "cScreen.cpp"
+#include "Coordonate.h"
 
 
 namespace
@@ -31,22 +32,21 @@ class Menu : public cScreen
 
 private:
 
-	sf::RenderWindow *_app;
+	sf::RenderWindow *m_app;
 
-	int movement_step;
-	int posx;
-	int posy;
-	sf::Texture texture;
-	sf::Sprite sprite;
-	sf::Sprite sprite1;
-	sf::Sprite sprite2;
-	static const int height = 66;
-	static const int width = 254;
-	static const int space = 90;
-	sf::IntRect* insideSprite;
-	sf::IntRect* insideSprite1;
-	sf::IntRect* insideSprite2;
-	sf::View Default_View;
+	int m_movementStep;
+	Coordonate* m_coord;
+	sf::Texture m_texture;
+	sf::Sprite m_sprite;
+	sf::Sprite m_sprite1;
+	sf::Sprite m_sprite2;
+	static const int m_height = 66;
+	static const int m_width = 254;
+	static const int m_space = 90;
+	sf::IntRect* m_insideSprite;
+	sf::IntRect* m_insideSprite1;
+	sf::IntRect* m_insideSprite2;
+	sf::View m_DefaultView;
 
 public:
 	Menu (sf::RenderWindow* App);

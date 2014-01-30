@@ -36,22 +36,22 @@ public:
 	sf::Sprite getSprite();
 
 private :
-	string _name;
+	string m_name;
 	// nombre de points de vie courant et nombre de points de vie total
-	float life[2];
+	float m_life[2];
 
 	// position de la Creature
-	Coordonate position;
+	Coordonate m_position;
 	// Chaque case correspond à une image de la Creature
-	sf::IntRect tabOrientation[12];
+	sf::IntRect m_tabOrientation[12];
 	// Donne l'orientation de la Creature
-	int orientation;
+	int m_orientation;
 
-	sf::Texture texture;
-	sf::Sprite S_orientation;
-	sf::Clock frameclock;
-	float elapsed;
-	int next;
+	sf::Texture m_texture;
+	sf::Sprite m_S_orientation;
+	sf::Clock m_frameclock;
+	float m_elapsed;
+	int m_next;
 };
 
 #endif /* CREATURE_H_ */

@@ -17,6 +17,7 @@
 #include <SFML/System.hpp>
 #include <fstream>
 #include "cScreen.cpp"
+#include "Coordonate.h"
 
 
 
@@ -24,12 +25,11 @@ class Option : public cScreen
 {
 
 private:
-	sf::RenderWindow *_app;
-	sf::RectangleShape menuPause;
-	sf::RectangleShape filtreTransparant;
-	sf::CircleShape rond;
-	int posx;
-	int posy;
+	sf::RenderWindow *m_app;
+	sf::RectangleShape m_menuPause;
+	sf::RectangleShape m_filtreTransparant;
+	sf::CircleShape m_rond;
+	Coordonate *m_coord;
 	//sf::Sprite Sprite;
 
 public:

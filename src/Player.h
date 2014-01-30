@@ -24,15 +24,15 @@ public:
 	int getWeapon();
 
 private:
-	int _experience;
-	int _toughness;
-	int _agility;
-	int _power;
-	int _weapon;
-	int _armor;
-	//list<Item> _inventory;
-	int _level;
-	float _protectionTime;
+	int m_experience;
+	int m_toughness;
+	int m_agility;
+	int m_power;
+	int m_weapon;
+	int m_armor;
+	//list<Item> m_inventory;
+	int m_level;
+	float m_protectionTime;
 
 
 

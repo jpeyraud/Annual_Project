@@ -16,6 +16,7 @@
 #include "HUD.h"
 #include "Minimap.h"
 #include "Player.h"
+#include "Coordonate.h"
 
 namespace
 {
@@ -27,26 +28,25 @@ class Game : public cScreen
 {
 
 private:
-	sf::RenderWindow *_app;
-	HighView *_vueHaute;
-	HUD *_affichageHaut;
-	HUD *_affichageBas;
-	Minimap *_minimap;
-	Player *_player;
-	Map map;
-	int movement_step;
-	int posx;
-	int posy;
-	int tailleMap;
-	int spawnX;
-	int spawnY;
-	vector<int> level;
-	sf::Vector2u visibility;
-	sf::Clock clock;
-	float speed;
-	float elapsed;
-	float deplacement;
-	int i;
+	sf::RenderWindow *m_app;
+	HighView *m_vueHaute;
+	HUD *m_affichageHaut;
+	HUD *m_affichageBas;
+	Minimap *m_minimap;
+	Player *m_player;
+	Map m_map;
+	int m_movement_step;
+	Coordonate *m_coord;
+	int m_tailleMap;
+	int m_spawnX;
+	int m_spawnY;
+	vector<int> m_level;
+	sf::Vector2u m_visibility;
+	sf::Clock m_clock;
+	float m_speed;
+	float m_elapsed;
+	float m_deplacement;
+	int m_i;
 
 public:
 	Game (sf::RenderWindow *app);

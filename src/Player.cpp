@@ -4,14 +4,14 @@
 
 Player::Player(int toughness, int agility, int power, int weapon, int armor, float protectionTime, string name, string image, int posx, int posy) : Creature(20, name, image, posx, posy)
 {
-	_toughness = toughness;
-	_agility = agility;
-	_power = power;
-	_weapon = weapon;
-	_armor = armor;
-	_protectionTime = protectionTime;
-	_experience = 0;
-	_level = 0;
+	m_toughness = toughness;
+	m_agility = agility;
+	m_power = power;
+	m_weapon = weapon;
+	m_armor = armor;
+	m_protectionTime = protectionTime;
+	m_experience = 0;
+	m_level = 0;
 }
 
 void Player::basicAttack()
@@ -27,7 +27,7 @@ void Player::specialAttack()
 // Gagne un niveau
 void Player::levelUp()
 {
-	_level ++;
+	m_level ++;
 }
 
 /* ***************** */
@@ -35,41 +35,41 @@ void Player::levelUp()
 /* ***************** */
 int Player::getAgility()
 {
-	return _agility;
+	return m_agility;
 }
 
 int Player::getArmor()
 {
-	return _armor;
+	return m_armor;
 }
 
 int Player::getExperience()
 {
-	return _experience;
+	return m_experience;
 }
 
 int Player::getLevel()
 {
-	return _level;
+	return m_level;
 }
 
 int Player::getPower()
 {
-	return _power;
+	return m_power;
 }
 
 float Player::getProtectionTime()
 {
-	return _protectionTime;
+	return m_protectionTime;
 }
 
 int Player::getToughness()
 {
-	return _toughness;
+	return m_toughness;
 }
 
 int Player::getWeapon()
 {
-	return _weapon;
+	return m_weapon;
 }
 

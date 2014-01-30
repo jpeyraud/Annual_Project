@@ -8,8 +8,8 @@ class Monster
 {
 
 private:
-	int _coeffpower;
-	int _id;
+	int m_coeffpower;
+	int m_id;
 
 public:
 	Monster();

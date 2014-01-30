@@ -12,14 +12,12 @@
 
 Option::Option(sf::RenderWindow *app)
 {
-	_app=app;
+	m_app=app;
 
-	filtreTransparant=sf::RectangleShape(sf::Vector2f(1100, 600));
+	m_filtreTransparant=sf::RectangleShape(sf::Vector2f(1100, 600));
 
-	rond.setRadius(100.0);
-	posx=0;
-	posy=0;
-
+	m_rond.setRadius(100.0);
+	m_coord=new Coordonate(0,0);
 }
 
 Option::~Option()
@@ -35,8 +33,8 @@ int Option::run(sf::RenderWindow *app)
 	imgGame=app->capture();
 	sf::Texture Gamefreeze;
 	Gamefreeze.loadFromImage(imgGame);
-	filtreTransparant.setTexture(&Gamefreeze);
-	filtreTransparant.setFillColor(sf::Color(255,255,255,128));
+	m_filtreTransparant.setTexture(&Gamefreeze);
+	m_filtreTransparant.setFillColor(sf::Color(255,255,255,128));
 	while(Running){
 		while (app->pollEvent(Event))
 		{
@@ -55,8 +53,8 @@ int Option::run(sf::RenderWindow *app)
 		}
 		app->clear();
 		app->setView(app->getDefaultView());
-		app->draw(filtreTransparant);
-		app->draw(rond);
+		app->draw(m_filtreTransparant);
+		app->draw(m_rond);
 		app->display();
 	}
 	return(-1);

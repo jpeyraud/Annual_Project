@@ -23,12 +23,12 @@ namespace
 class Game_Engine
 {
 private:
-	sf::RenderWindow* _app;
-	cScreen *_menu;
-	cScreen *_game;
-	cScreen *_option;
-	int _timePlayed;
-	string _playerSprites;
+	sf::RenderWindow* m_app;
+	cScreen *m_menu;
+	cScreen *m_game;
+	cScreen *m_option;
+	int m_timePlayed;
+	string m_playerSprites;
 
 
 public:

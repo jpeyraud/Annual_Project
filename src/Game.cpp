@@ -11,34 +11,33 @@
 
 Game::Game (sf::RenderWindow *app)
 {
-	_app=app;
-	movement_step = 5;
-	posx = 320;
-	posy = 240;
+	m_app=app;
+	m_movement_step = 5;
+	m_coord= new Coordonate(320,240);
 	ifstream mapFile("map.txt");
-	mapFile >> tailleMap;
-	mapFile >> spawnX;
-	mapFile >> spawnY;
-	visibility=app->getSize();
+	mapFile >> m_tailleMap;
+	mapFile >> m_spawnX;
+	mapFile >> m_spawnY;
+	m_visibility=app->getSize();
 	app->setFramerateLimit(60);
-	speed=256;
-	_vueHaute=new HighView(visibility, spawnX, spawnY);
-	_minimap=new Minimap(app->getSize(), visibility, spawnX, spawnY);
-	_affichageHaut=new HUD(true, visibility, spawnX, spawnY);
-	_affichageBas=new HUD(false, visibility, spawnX, spawnY);
+	m_speed=256;
+	m_vueHaute=new HighView(m_visibility, m_spawnX, m_spawnY);
+	m_minimap=new Minimap(app->getSize(), m_visibility, m_spawnX, m_spawnY);
+	m_affichageHaut=new HUD(true, m_visibility, m_spawnX, m_spawnY);
+	m_affichageBas=new HUD(false, m_visibility, m_spawnX, m_spawnY);
 	int i=0;
-	_player=new Player(0, 0, 5, 100, 100, 30, "Lulu", "character.png", spawnX, spawnY);
+	m_player=new Player(0, 0, 5, 100, 100, 30, "Lulu", "character.png", m_spawnX, m_spawnY);
 	int tile;
 
-	while(i<tailleMap){
+	while(i<m_tailleMap){
 		mapFile >> tile;
-		level.push_back(tile);
+		m_level.push_back(tile);
 		i++;
 	}
 
 	// on crée la tilemap avec le niveau défini dans map.txt
 
-	map.load("tilea4.png", sf::Vector2u(32, 32), level, 64, 32);
+	m_map.load("tilea4.png", sf::Vector2u(32, 32), m_level, 64, 32);
 
 
 }
@@ -55,8 +54,8 @@ int Game::run (sf::RenderWindow *app){
 
 		while (app->isOpen())
 		{
-			elapsed = clock.restart().asSeconds();
-			deplacement=speed*elapsed;
+			m_elapsed = m_clock.restart().asSeconds();
+			m_deplacement=m_speed*m_elapsed;
 			// on gère les évènements
 			sf::Event event;
 			while (app->pollEvent(event))
@@ -67,30 +66,30 @@ int Game::run (sf::RenderWindow *app){
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 			{
-				_vueHaute->Move(-deplacement, 0);
-				_minimap->Move(-deplacement, 0);
-				_player->instantHeal(0.1);
-				_player->move(sf::Keyboard::Left, deplacement);
+				m_vueHaute->Move(-m_deplacement, 0);
+				m_minimap->Move(-m_deplacement, 0);
+				m_player->instantHeal(0.1);
+				m_player->move(sf::Keyboard::Left, m_deplacement);
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)|| sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-				_vueHaute->Move(deplacement, 0);
-				_minimap->Move(deplacement, 0);
-				_player->instantHeal(0.1);
-				_player->move(sf::Keyboard::Right, deplacement);
+				m_vueHaute->Move(m_deplacement, 0);
+				m_minimap->Move(m_deplacement, 0);
+				m_player->instantHeal(0.1);
+				m_player->move(sf::Keyboard::Right, m_deplacement);
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 			{
-				_vueHaute->Move(0, -deplacement);
-				_minimap->Move(0, -deplacement);
-				_player->takeDamage(0.1);
-				_player->move(sf::Keyboard::Up, deplacement);
+				m_vueHaute->Move(0, -m_deplacement);
+				m_minimap->Move(0, -m_deplacement);
+				m_player->takeDamage(0.1);
+				m_player->move(sf::Keyboard::Up, m_deplacement);
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)|| sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 			{
-				_vueHaute->Move(0, deplacement);
-				_minimap->Move(0, deplacement);
-				_player->takeDamage(0.1);
-				_player->move(sf::Keyboard::Down, deplacement);
+				m_vueHaute->Move(0, m_deplacement);
+				m_minimap->Move(0, m_deplacement);
+				m_player->takeDamage(0.1);
+				m_player->move(sf::Keyboard::Down, m_deplacement);
 
 			}
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
@@ -101,11 +100,11 @@ int Game::run (sf::RenderWindow *app){
 			}
 
 			app->clear();
-			_vueHaute->Draw(app, map);
-			app->draw(_player->getSprite());
-			_affichageBas->Draw(app, _player);
-			_affichageHaut->Draw(app, _player);
-			_minimap->Draw(app, map);
+			m_vueHaute->Draw(app, m_map);
+			app->draw(m_player->getSprite());
+			m_affichageBas->Draw(app, m_player);
+			m_affichageHaut->Draw(app, m_player);
+			m_minimap->Draw(app, m_map);
 			app->display();
 
 		}

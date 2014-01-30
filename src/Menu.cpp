@@ -11,30 +11,29 @@
 
 Menu::Menu (sf::RenderWindow* app)
 {
-	_app=app;
+	m_app=app;
 
-	Default_View=_app->getDefaultView();
-	movement_step = 5;
-	posx = 320;
-	posy = 240;
-	if (!texture.loadFromFile("button.png"))
+	m_DefaultView=m_app->getDefaultView();
+	m_movementStep = 5;
+	m_coord = new Coordonate(320,240);
+	if (!m_texture.loadFromFile("button.png"))
 	{
 		cout << "error texture button" << endl;
 	}
-	sprite.setTexture(texture);
-	sprite.setPosition( (_app->getSize ().x - width)/2, (_app->getSize().y - height)/2 - space );
+	m_sprite.setTexture(m_texture);
+	m_sprite.setPosition( (m_app->getSize ().x - m_width)/2, (m_app->getSize().y - m_height)/2 - m_space );
 
 
-	sprite1.setTexture(texture);
-	sprite1.setPosition( (_app->getSize ().x - width)/2, (_app->getSize().y - height)/2 );
+	m_sprite1.setTexture(m_texture);
+	m_sprite1.setPosition( (m_app->getSize ().x - m_width)/2, (m_app->getSize().y - m_height)/2 );
 
 
-	sprite2.setTexture(texture);
-	sprite2.setPosition( (_app->getSize ().x - width)/2, (_app->getSize().y - height)/2 + space);
+	m_sprite2.setTexture(m_texture);
+	m_sprite2.setPosition( (m_app->getSize ().x - m_width)/2, (m_app->getSize().y - m_height)/2 + m_space);
 
-	insideSprite = new sf::IntRect(0,0,width,height);
-	insideSprite1 = new sf::IntRect(0,0,width,height);
-	insideSprite2 = new sf::IntRect(0,0,width,height);
+	m_insideSprite = new sf::IntRect(0,0,m_width,m_height);
+	m_insideSprite1 = new sf::IntRect(0,0,m_width,m_height);
+	m_insideSprite2 = new sf::IntRect(0,0,m_width,m_height);
 }
 
 Menu::~Menu()
@@ -66,17 +65,17 @@ int Menu::run (sf::RenderWindow* _app)
 				//changement de Screen
 				if (Event.mouseButton.button == sf::Mouse::Left)
 				{
-					if (hitTest( (sf::FloatRect) sprite.getGlobalBounds(), width, height,  mouse))
+					if (hitTest( (sf::FloatRect) m_sprite.getGlobalBounds(), m_width, m_height,  mouse))
 					{
 						nextScreen = 0;
 						Running = false;
 					}
-					if (hitTest( (sf::FloatRect) sprite1.getGlobalBounds(), width, height,  mouse))
+					if (hitTest( (sf::FloatRect) m_sprite1.getGlobalBounds(), m_width, m_height,  mouse))
 					{
 						nextScreen = 2;
 						Running = false;
 					}
-					if (hitTest( (sf::FloatRect) sprite2.getGlobalBounds(), width, height,  mouse))
+					if (hitTest( (sf::FloatRect) m_sprite2.getGlobalBounds(), m_width, m_height,  mouse))
 					{
 						nextScreen = -1;
 						Running = false;
@@ -87,40 +86,40 @@ int Menu::run (sf::RenderWindow* _app)
 
 		//--------------- BUTTONS MENU ---------------//
 		//Game
-		if (hitTest( (sf::FloatRect) sprite.getGlobalBounds(), width, height,  mouse))
+		if (hitTest( (sf::FloatRect) m_sprite.getGlobalBounds(), m_width, m_height,  mouse))
 		{
-			insideSprite = new sf::IntRect(0,height,width,height);
+			m_insideSprite = new sf::IntRect(0,m_height,m_width,m_height);
 		}
 		else
 		{
-			insideSprite = new sf::IntRect(0,0,width,height);
+			m_insideSprite = new sf::IntRect(0,0,m_width,m_height);
 		}
-		if (hitTest( (sf::FloatRect) sprite1.getGlobalBounds(), width, height,  mouse))
+		if (hitTest( (sf::FloatRect) m_sprite1.getGlobalBounds(), m_width, m_height,  mouse))
 		{
-			insideSprite1 = new sf::IntRect(0,height,width,height);
+			m_insideSprite1 = new sf::IntRect(0,m_height,m_width,m_height);
 		}
 		else
 		{
-			insideSprite1 = new sf::IntRect(0,0,width,height);
+			m_insideSprite1 = new sf::IntRect(0,0,m_width,m_height);
 		}
-		if (hitTest( (sf::FloatRect) sprite2.getGlobalBounds(), width, height,  mouse))
+		if (hitTest( (sf::FloatRect) m_sprite2.getGlobalBounds(), m_width, m_height,  mouse))
 		{
-			insideSprite2 = new sf::IntRect(0,height,width,height);
+			m_insideSprite2 = new sf::IntRect(0,m_height,m_width,m_height);
 		}
 		else
 		{
-			insideSprite2 = new sf::IntRect(0,0,width,height);
+			m_insideSprite2 = new sf::IntRect(0,0,m_width,m_height);
 		}
-		sprite.setTextureRect(*insideSprite);
-		sprite1.setTextureRect(*insideSprite1);
-		sprite2.setTextureRect(*insideSprite2);
+		m_sprite.setTextureRect(*m_insideSprite);
+		m_sprite1.setTextureRect(*m_insideSprite1);
+		m_sprite2.setTextureRect(*m_insideSprite2);
 
 		//Drawing
 		_app->clear(sf::Color(255, 255, 255));
-		_app->setView(Default_View);
-		_app->draw(sprite1);
-		_app->draw(sprite);
-		_app->draw(sprite2);
+		_app->setView(m_DefaultView);
+		_app->draw(m_sprite1);
+		_app->draw(m_sprite);
+		_app->draw(m_sprite2);
 		_app->display();
 		//Running = false;
 	}
