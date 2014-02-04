@@ -15,8 +15,7 @@ Minimap::Minimap(sf::Vector2u windowSize, sf::Vector2u visibility, float spawnX,
 	sf::Vector2f ViewSize(visibility.x*1.5, visibility.y*1.5);
 	m_vue.setCenter(ViewCenter);
 	m_vue.setSize(ViewSize);
-	float ratioX=(windowSize.y*0.30)/windowSize.x;
-	m_vue.setViewport(sf::FloatRect(.99f-ratioX, 0.065f, ratioX, 0.30f));
+	m_vue.setViewport(sf::FloatRect(0.75f, 0.065, 0.20f, 0.30f));
 	float posX=spawnX-(visibility.x*1.5)/2;
 	float posY=spawnY-(visibility.y*1.5)/2;
 	m_sprite.setSize(sf::Vector2f(visibility.x*1.5, visibility.y*1.5));

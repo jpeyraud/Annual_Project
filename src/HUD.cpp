@@ -15,6 +15,7 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 	m_Pos=posi;
 	m_visibility=visi;
 	m_visibility.y=m_visibility.y*0.15;
+	m_characterSize=m_visibility.y*0.20;
 	/*
 	 * Elements commun au deux HUD :
 	 * La position de la vue (monde 2D)
@@ -70,7 +71,7 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 		m_hud.setViewport(sf::FloatRect(0, 0, 1, 0.15f));
 
 		m_reserve.setFont(m_font);//Assignation police.
-		m_reserve.setCharacterSize(m_visibility.y*0.25);//Assignation taille (en fonction de la visibility).
+		m_reserve.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
 		m_reserve.setStyle(sf::Text::Bold);//Assignation Style.
 		m_reserve.setColor(sf::Color::Black);//Assignation couleur.
 		m_reserve.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.1, m_coord->getCoordonate()[1]+m_visibility.y*0.15);//Assignation position
@@ -156,69 +157,58 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 		m_background_right.setTexture(&m_background_texture);//et la texture
 
 		m_Power.setFont(m_font);//Assignation police.
-		m_Power.setCharacterSize(m_visibility.y*0.25);//Assignation taille (en fonction de la visibility).
+		m_Power.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
 		m_Power.setStyle(sf::Text::Bold);//Assignation Style.
 		m_Power.setColor(sf::Color::Black);//Assignation couleur.
 		m_Power.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.055, m_coord->getCoordonate()[1]+m_visibility.y*0.15);//Assignation position
 
 		m_Agility.setFont(m_font);//Assignation police.
-		m_Agility.setCharacterSize(m_visibility.y*0.25);//Assignation taille (en fonction de la visibility).
+		m_Agility.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
 		m_Agility.setStyle(sf::Text::Bold);//Assignation Style.
 		m_Agility.setColor(sf::Color::Black);//Assignation couleur.
 		m_Agility.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.16, m_coord->getCoordonate()[1]+m_visibility.y*0.15);//Assignation position
 
 		m_Toughness.setFont(m_font);//Assignation police.
-		m_Toughness.setCharacterSize(m_visibility.y*0.25);//Assignation taille (en fonction de la visibility).
+		m_Toughness.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
 		m_Toughness.setStyle(sf::Text::Bold);//Assignation Style.
 		m_Toughness.setColor(sf::Color::Black);//Assignation couleur.
 		m_Toughness.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.27, m_coord->getCoordonate()[1]+m_visibility.y*0.15);//Assignation position
 
 		m_Level.setFont(m_font);//Assignation police.
-		m_Level.setCharacterSize(m_visibility.y*0.25);//Assignation taille (en fonction de la visibility).
+		m_Level.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
 		m_Level.setStyle(sf::Text::Bold);//Assignation Style.
 		m_Level.setColor(sf::Color::Black);//Assignation couleur.
 		m_Level.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.055, m_coord->getCoordonate()[1]+m_visibility.y*0.55);//Assignation position
 
 		m_World.setFont(m_font);//Assignation police.
-		m_World.setCharacterSize(m_visibility.y*0.25);//Assignation taille (en fonction de la visibility).
+		m_World.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
 		m_World.setStyle(sf::Text::Bold);//Assignation Style.
 		m_World.setColor(sf::Color::Black);//Assignation couleur.
 		m_World.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.655, m_coord->getCoordonate()[1]+m_visibility.y*0.15);//Assignation position
 
 		m_Monster_Rank.setFont(m_font);//Assignation police.
-		m_Monster_Rank.setCharacterSize(m_visibility.y*0.25);//Assignation taille (en fonction de la visibility).
+		m_Monster_Rank.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
 		m_Monster_Rank.setStyle(sf::Text::Bold);//Assignation Style.
 		m_Monster_Rank.setColor(sf::Color::Black);//Assignation couleur.
 		m_Monster_Rank.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.655, m_coord->getCoordonate()[1]+m_visibility.y*0.55);//Assignation position
 
 		m_Resource_1=sf::RectangleShape(sf::Vector2f(m_visibility.x*0.025, m_visibility.x*0.025));
-		m_Resource_1.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.805, m_coord->getCoordonate()[1]+m_visibility.y*0.16);//On définit la position.
+		m_Resource_1.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.815, m_coord->getCoordonate()[1]+m_visibility.y*0.16);//On définit la position.
 		m_Resource_1.setFillColor(sf::Color::Red);//et la texture
 
 		m_Resource_2=sf::RectangleShape(sf::Vector2f(m_visibility.x*0.025, m_visibility.x*0.025));
-		m_Resource_2.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.835, m_coord->getCoordonate()[1]+m_visibility.y*0.16);//On définit la position.
+		m_Resource_2.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.845, m_coord->getCoordonate()[1]+m_visibility.y*0.16);//On définit la position.
 		m_Resource_2.setFillColor(sf::Color::Red);//et la texture
 
 		m_Resource_3=sf::RectangleShape(sf::Vector2f(m_visibility.x*0.025, m_visibility.x*0.025));
-		m_Resource_3.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.865, m_coord->getCoordonate()[1]+m_visibility.y*0.16);//On définit la position.
+		m_Resource_3.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.875, m_coord->getCoordonate()[1]+m_visibility.y*0.16);//On définit la position.
 		m_Resource_3.setFillColor(sf::Color::Red);//et la texture
 
 
 
 
 
-		/*
-		 * Conteneur de la barre de vie.
-		 */
-		//		barreDeVie_contour.setPosition(posX+(visibility.x*0.13), posY+(visibility.y)*0.25);
-		//		barreDeVie_contour.setSize(Vector2f(250, 25));
-		//		barreDeVie_contour.setOutlineThickness(2);
-		//		barreDeVie_contour.setOutlineColor(Color::Black);
-		//		barreDeVie_contour.setFillColor(Color::Black);
-		/*
-		 * Contenu de la barre de vie.
-		 */
-		//		barreDeVie.setPosition(posX+(visibility.x*0.13), posY+(visibility.y)*0.25);
+
 
 		m_Life_bound.loadFromFile("HUDsprite.png");
 		m_barreDeVie_contour.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.475, m_coord->getCoordonate()[1]);
@@ -227,7 +217,7 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 		m_barreDeVie.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.475, m_coord->getCoordonate()[1]);
 		m_barreDeVie.setSize(sf::Vector2f(m_visibility.x*0.10, m_visibility.y));
 
-		m_hud.setViewport(sf::FloatRect(0, 0.851, 1, 0.15f));
+		m_hud.setViewport(sf::FloatRect(0, 0.85, 1, 0.15f));
 
 	}
 
@@ -290,7 +280,7 @@ void HUD::Draw(sf::RenderWindow* window, Player* player)
 		window->draw(m_Resource_2);
 		window->draw(m_Resource_3);
 		float PV=player->getRatioLife();
-		m_barreDeVie.setPosition(m_coord->getCoordonate()[1]+m_visibility.x*0.475, m_coord->getCoordonate()[1]+(m_visibility.y*(1-PV)));
+		m_barreDeVie.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.475, m_coord->getCoordonate()[1]+(m_visibility.y*(1-PV)));
 		m_barreDeVie.setFillColor(sf::Color::Red);
 		window->draw(m_barreDeVie);
 		window->draw(m_barreDeVie_contour);

@@ -28,7 +28,7 @@ class Game : public cScreen
 {
 
 private:
-	sf::RenderWindow *m_app;
+
 	HighView *m_vueHaute;
 	HUD *m_affichageHaut;
 	HUD *m_affichageBas;

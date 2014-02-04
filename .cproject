@@ -41,7 +41,7 @@
 									<listOptionValue builtIn="false" value="sfml-window-d"/>
 									<listOptionValue builtIn="false" value="sfml-system-d"/>
 								</option>
-								<option id="gnu.cpp.link.option.paths.1053696099" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+								<option id="gnu.cpp.link.option.paths.1053696099" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SFML-2.1\lib&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.109662393" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
