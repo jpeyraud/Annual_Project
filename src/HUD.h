@@ -38,6 +38,7 @@ private:
 	sf::View m_hud;
 	bool m_Pos;
 	sf::Font m_font;
+	int m_characterSize;
 	sf::RectangleShape m_background;
 	sf::RectangleShape m_background_left;
 	sf::RectangleShape m_background_right;

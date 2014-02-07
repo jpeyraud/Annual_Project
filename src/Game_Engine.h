@@ -12,8 +12,8 @@
 #include "Game.h"
 #include "Option.h"
 
-#define X 1120
-#define Y 640
+#define X 1024
+#define Y 768
 
 namespace
 {

@@ -11,7 +11,7 @@
 
 Game::Game (sf::RenderWindow *app)
 {
-	m_app=app;
+
 	m_movement_step = 5;
 	m_coord= new Coordonate(320,240);
 	ifstream mapFile("map.txt");
@@ -19,6 +19,7 @@ Game::Game (sf::RenderWindow *app)
 	mapFile >> m_spawnX;
 	mapFile >> m_spawnY;
 	m_visibility=app->getSize();
+	cout << "x : " << m_visibility.x << "  y : " << m_visibility.y << endl;
 	app->setFramerateLimit(60);
 	m_speed=256;
 	m_vueHaute=new HighView(m_visibility, m_spawnX, m_spawnY);
@@ -62,7 +63,11 @@ int Game::run (sf::RenderWindow *app){
 			{
 				if(event.type == sf::Event::Closed)
 					return -1;
+				if (event.type == sf::Event::LostFocus)
+					return 1;
+
 			}
+
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 			{
@@ -95,9 +100,7 @@ int Game::run (sf::RenderWindow *app){
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
 				return 1;
 			}
-			if (event.type == sf::Event::LostFocus){
-				return 1;
-			}
+
 
 			app->clear();
 			m_vueHaute->Draw(app, m_map);
