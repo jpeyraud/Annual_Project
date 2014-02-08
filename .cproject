@@ -23,7 +23,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.1303874707" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.1654116504" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
 								<option id="gnu.cpp.compiler.option.include.paths.1057746189" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SFML-2.1\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Logiciels\SFML-2.1\include&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.optimization.level.1018401432" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.debugging.level.701323194" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
@@ -42,7 +42,7 @@
 									<listOptionValue builtIn="false" value="sfml-system-d"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.1053696099" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SFML-2.1\lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Logiciels\SFML-2.1\lib&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.109662393" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
