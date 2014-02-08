@@ -11,17 +11,18 @@ class Player : public Creature
 
 public:
 	Player(int toughness, int agility, int power, int weapon, int armor, float protectionTime, string name, string image, int posx, int posy);
+	void move(sf::Keyboard::Key direction, float mvt);
 	void basicAttack();
 	void specialAttack();
 	void levelUp();
-	int getAgility();
-	int getArmor();
-	int getExperience();
-	int getLevel();
-	int getPower();
-	float getProtectionTime();
-	int getToughness();
-	int getWeapon();
+	int getAgility() const;
+	int getArmor() const;
+	int getExperience() const;
+	int getLevel() const;
+	int getPower() const;
+	float getProtectionTime() const;
+	int getToughness() const;
+	int getWeapon() const;
 
 private:
 	int m_experience;

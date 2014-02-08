@@ -24,34 +24,33 @@ using std::endl;
 class Creature {
 
 public:
-	Creature(int nbPV, string name, string image, int posx, int posy);
+	Creature();
 	virtual ~Creature();
-	float getRatioLife();
+	float getRatioLife() const;
 	void takeDamage(float damage);
 	void instantHeal(float heal);
-	void move(sf::Keyboard::Key direction, float mvt);
-	float getLife();
-	string getName();
+	virtual void move(sf::Keyboard::Key direction, float mvt) = 0;
+	float getLife() const;
+	string getName() const;
 	void setSprite(int i);
-	sf::Sprite getSprite();
+	sf::Sprite getSprite() const;
 
-private :
+protected :
 	string m_name;
-	// nombre de points de vie courant et nombre de points de vie total
-	float m_life[2];
-
-	// position de la Creature
+	// position of Creature
 	Coordonate m_position;
-	// Chaque case correspond à une image de la Creature
+	// Each box corresponds to an image of Creature
 	sf::IntRect m_tabOrientation[12];
-	// Donne l'orientation de la Creature
-	int m_orientation;
-
 	sf::Texture m_texture;
 	sf::Sprite m_S_orientation;
+	// Give the orientation of Creature
+	int m_orientation;
 	sf::Clock m_frameclock;
 	float m_elapsed;
 	int m_next;
+	// number of current hit points and total hit points
+	float m_life[2];
+
 };
 
 #endif /* CREATURE_H_ */
