@@ -3,16 +3,18 @@
 
 
 #include <exception>
+#include "Creature.h"
 
-class Monster
+class Monster : public Creature
 {
 
-private:
+protected:
 	int m_coeffpower;
 	int m_id;
 
 public:
-	Monster();
+	Monster(int id, int coeffpower, string name, string image, int posx, int posy);
+	void move(float mvt);
 	void attack();
 
 };

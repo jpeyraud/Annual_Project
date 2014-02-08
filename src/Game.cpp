@@ -28,6 +28,7 @@ Game::Game (sf::RenderWindow *app)
 	m_affichageBas=new HUD(false, m_visibility, m_spawnX, m_spawnY);
 	int i=0;
 	m_player=new Player(0, 0, 5, 100, 100, 30, "Lulu", "character.png", m_spawnX, m_spawnY);
+	m_monster = new Monster(1, 5, "Loup", "character.png", m_spawnX, m_spawnY);
 	int tile;
 
 	while(i<m_tailleMap){
@@ -68,7 +69,6 @@ int Game::run (sf::RenderWindow *app){
 
 			}
 
-
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 			{
 				m_vueHaute->Move(-m_deplacement, 0);
@@ -101,10 +101,12 @@ int Game::run (sf::RenderWindow *app){
 				return 1;
 			}
 
+			m_monster->move(m_deplacement);
 
 			app->clear();
 			m_vueHaute->Draw(app, m_map);
 			app->draw(m_player->getSprite());
+			app->draw(m_monster->getSprite());
 			m_affichageBas->Draw(app, m_player);
 			m_affichageHaut->Draw(app, m_player);
 			m_minimap->Draw(app, m_map);

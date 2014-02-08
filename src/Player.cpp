@@ -37,142 +37,142 @@ void Player::move(sf::Keyboard::Key direction, float mvt)
 {
 	int* pos = m_position.getCoordonate();
 
-		// Move left
-		if (direction == sf::Keyboard::Left)
+	// Move left
+	if (direction == sf::Keyboard::Left)
+	{
+		// Changes the coordinates
+		m_position.setCoordonate(pos[0]-1,pos[1]);
+		m_S_orientation.move(sf::Vector2f(-mvt, 0));
+		m_elapsed = m_frameclock.getElapsedTime().asSeconds();
+
+		if(m_elapsed > 0.15)
 		{
-			// Changes the coordinates
-			m_position.setCoordonate(pos[0]-1,pos[1]);
-			m_S_orientation.move(sf::Vector2f(-mvt, 0));
-			m_elapsed = m_frameclock.getElapsedTime().asSeconds();
-
-			if(m_elapsed > 0.15)
+			switch (m_orientation)
 			{
-				switch (m_orientation)
-				{
-				case 3 :
-					setSprite(m_orientation);
-					m_orientation++;
-					break;
-				case 4:
-					setSprite(m_orientation);
-					m_orientation+=m_next;
-					m_next=-m_next;
-					break;
-				case 5:
-					setSprite(m_orientation);
-					m_orientation--;
-					break;
-				default:
-					setSprite(4);
-					m_orientation= 4+m_next;
-					m_next=-m_next;
-					break;
-				}
-				m_frameclock.restart();
+			case 3 :
+				setSprite(m_orientation);
+				m_orientation++;
+				break;
+			case 4:
+				setSprite(m_orientation);
+				m_orientation+=m_next;
+				m_next=-m_next;
+				break;
+			case 5:
+				setSprite(m_orientation);
+				m_orientation--;
+				break;
+			default:
+				setSprite(4);
+				m_orientation= 4+m_next;
+				m_next=-m_next;
+				break;
 			}
+			m_frameclock.restart();
 		}
+	}
 
-		// Move right
-		if (direction == sf::Keyboard::Right)
+	// Move right
+	if (direction == sf::Keyboard::Right)
+	{
+		m_position.setCoordonate(pos[0]+1,pos[1]);
+		m_S_orientation.move(sf::Vector2f(mvt, 0));
+		m_elapsed = m_frameclock.getElapsedTime().asSeconds();
+
+		if(m_elapsed > 0.15)
 		{
-			m_position.setCoordonate(pos[0]+1,pos[1]);
-			m_S_orientation.move(sf::Vector2f(mvt, 0));
-			m_elapsed = m_frameclock.getElapsedTime().asSeconds();
-
-			if(m_elapsed > 0.15)
+			switch (m_orientation)
 			{
-				switch (m_orientation)
-				{
-				case 6:
-					setSprite(m_orientation);
-					m_orientation++;
-					break;
-				case 7:
-					setSprite(m_orientation);
-					m_orientation+=m_next;
-					m_next=-m_next;
-					break;
-				case 8:
-					setSprite(m_orientation);
-					m_orientation--;
-					break;
-				default:
-					setSprite(7);
-					m_orientation=7+m_next;
-					m_next=-m_next;
-					break;
-				}
-				m_frameclock.restart();
+			case 6:
+				setSprite(m_orientation);
+				m_orientation++;
+				break;
+			case 7:
+				setSprite(m_orientation);
+				m_orientation+=m_next;
+				m_next=-m_next;
+				break;
+			case 8:
+				setSprite(m_orientation);
+				m_orientation--;
+				break;
+			default:
+				setSprite(7);
+				m_orientation=7+m_next;
+				m_next=-m_next;
+				break;
 			}
+			m_frameclock.restart();
 		}
+	}
 
-		// Move up
-		if (direction == sf::Keyboard::Up)
+	// Move up
+	if (direction == sf::Keyboard::Up)
+	{
+		m_position.setCoordonate(pos[0],pos[1]+1);
+		m_S_orientation.move(sf::Vector2f(0, -mvt));
+		m_elapsed = m_frameclock.getElapsedTime().asSeconds();
+
+		if(m_elapsed > 0.15)
 		{
-			m_position.setCoordonate(pos[0],pos[1]+1);
-			m_S_orientation.move(sf::Vector2f(0, -mvt));
-			m_elapsed = m_frameclock.getElapsedTime().asSeconds();
-
-			if(m_elapsed > 0.15)
+			switch (m_orientation)
 			{
-				switch (m_orientation)
-				{
-				case 9:
-					setSprite(m_orientation);
-					m_orientation++;
-					break;
-				case 10:
-					setSprite(m_orientation);
-					m_orientation+=m_next;
-					m_next=-m_next;
-					break;
-				case 11:
-					setSprite(m_orientation);
-					m_orientation--;
-					break;
-				default:
-					setSprite(10);
-					m_orientation=10+m_next;
-					m_next=-m_next;
-					break;
-				}
-				m_frameclock.restart();
+			case 9:
+				setSprite(m_orientation);
+				m_orientation++;
+				break;
+			case 10:
+				setSprite(m_orientation);
+				m_orientation+=m_next;
+				m_next=-m_next;
+				break;
+			case 11:
+				setSprite(m_orientation);
+				m_orientation--;
+				break;
+			default:
+				setSprite(10);
+				m_orientation=10+m_next;
+				m_next=-m_next;
+				break;
 			}
+			m_frameclock.restart();
 		}
+	}
 
-		// Move down
-		if (direction == sf::Keyboard::Down)
+	// Move down
+	if (direction == sf::Keyboard::Down)
+	{
+		m_position.setCoordonate(pos[0],pos[1]-1);
+		m_S_orientation.move(sf::Vector2f(0, mvt));
+		m_elapsed = m_frameclock.getElapsedTime().asSeconds();
+
+		if(m_elapsed > 0.15)
 		{
-			m_position.setCoordonate(pos[0],pos[1]-1);
-			m_S_orientation.move(sf::Vector2f(0, mvt));
-			m_elapsed = m_frameclock.getElapsedTime().asSeconds();
-
-			if(m_elapsed > 0.15)
+			switch (m_orientation)
 			{
-				switch (m_orientation)
-				{
-				case 0:
-					setSprite(m_orientation);
-					m_orientation++;
-					break;
-				case 1:
-					setSprite(m_orientation);
-					m_orientation+=m_next;
-					m_next=-m_next;
-					break;
-				case 2:
-					setSprite(m_orientation);
-					m_orientation--;
-					break;
-				default:
-					setSprite(1);
-					m_orientation=1+m_next;
-					m_next=-m_next;
-					break;
-				}
-				m_frameclock.restart();
+			case 0:
+				setSprite(m_orientation);
+				m_orientation++;
+				break;
+			case 1:
+				setSprite(m_orientation);
+				m_orientation+=m_next;
+				m_next=-m_next;
+				break;
+			case 2:
+				setSprite(m_orientation);
+				m_orientation--;
+				break;
+			default:
+				setSprite(1);
+				m_orientation=1+m_next;
+				m_next=-m_next;
+				break;
 			}
+			m_frameclock.restart();
 		}
+	}
 }
 
 void Player::basicAttack()

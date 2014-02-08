@@ -24,7 +24,7 @@ public:
 	int getToughness() const;
 	int getWeapon() const;
 
-private:
+protected:
 	int m_experience;
 	int m_toughness;
 	int m_agility;

@@ -29,7 +29,6 @@ public:
 	float getRatioLife() const;
 	void takeDamage(float damage);
 	void instantHeal(float heal);
-	virtual void move(sf::Keyboard::Key direction, float mvt) = 0;
 	float getLife() const;
 	string getName() const;
 	void setSprite(int i);

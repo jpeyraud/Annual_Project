@@ -17,6 +17,7 @@
 #include "Minimap.h"
 #include "Player.h"
 #include "Coordonate.h"
+#include "Monster.h"
 
 namespace
 {
@@ -34,6 +35,7 @@ private:
 	HUD *m_affichageBas;
 	Minimap *m_minimap;
 	Player *m_player;
+	Monster *m_monster;
 	Map m_map;
 	int m_movement_step;
 	Coordonate *m_coord;
