@@ -19,7 +19,6 @@ Game::Game (sf::RenderWindow *app)
 	mapFile >> m_spawnX;
 	mapFile >> m_spawnY;
 	m_visibility=app->getSize();
-	cout << "x : " << m_visibility.x << "  y : " << m_visibility.y << endl;
 	app->setFramerateLimit(60);
 	m_speed=256;
 	m_vueHaute=new HighView(m_visibility, m_spawnX, m_spawnY);

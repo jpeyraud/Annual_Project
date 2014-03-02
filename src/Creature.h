@@ -14,12 +14,7 @@
 #include "Map.h"
 #include "Coordonate.h"
 
-namespace
-{
-using std::string;
-using std::cout;
-using std::endl;
-}
+
 
 class Creature {
 

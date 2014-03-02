@@ -6,7 +6,6 @@
  */
 
 #include "HUD.h"
-
 /*
  * Constructeur qui prend en paramètres la dimension de la fenêtre
  * et le boolean qui lui dit si elle est en haut ou en bas.

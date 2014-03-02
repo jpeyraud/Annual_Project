@@ -7,6 +7,12 @@
 
 #include "Creature.h"
 
+namespace
+{
+using std::string;
+using std::cout;
+using std::endl;
+}
 
 Creature::Creature()
 {
