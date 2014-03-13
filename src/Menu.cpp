@@ -17,7 +17,8 @@ Menu::Menu (sf::RenderWindow* app)
 	m_movementStep = 5;
 	m_coord = new Coordonate(320,240);
 
-	if (!m_textFont.loadFromFile("Flesh Wound.ttf"))  //Sketch Gothic School
+	// -------------------    Loading Font & Texture    ------------------- //
+	if (!m_textFont.loadFromFile("OldLondon.ttf"))  //Sketch Gothic School
 	{
 		cout << "error fontMenu" << endl;
 	}
@@ -33,18 +34,21 @@ Menu::Menu (sf::RenderWindow* app)
 	int posButtonX = (m_app->getSize ().x - m_width)/2;
 	int posButtonY = (m_app->getSize().y - m_height)/2;
 
+
+	// -------------------    Text    ------------------- //
 	m_textPlay= sf::Text("PLAY", m_textFont, 60);
 	m_textOption= sf::Text("OPTION", m_textFont, 60);
 	m_textExit= sf::Text("EXIT", m_textFont, 60);
 
-	m_textPlay.setPosition(m_app->getSize().x/2 - 50, posButtonY+m_height/5-m_space);
-	m_textOption.setPosition(m_app->getSize().x/2 - 80, posButtonY+m_height/5);
-	m_textExit.setPosition(m_app->getSize().x/2 - 50, posButtonY+m_height/5+m_space);
+	m_textPlay.setPosition(m_app->getSize().x/2 - 70, posButtonY+m_height/5-m_space);
+	m_textOption.setPosition(m_app->getSize().x/2 - 110, posButtonY+m_height/5);
+	m_textExit.setPosition(m_app->getSize().x/2 - 70, posButtonY+m_height/5+m_space);
 
 	m_textPlay.setColor(sf::Color(0,0,0));
 	m_textOption.setColor(sf::Color(0,0,0));
 	m_textExit.setColor(sf::Color(0,0,0));
 
+	// -------------------    Sprite    ------------------- //
 	m_spritePlay.setTexture(m_textureMenuButton);
 	m_spritePlay.setPosition( posButtonX, posButtonY - m_space );
 
@@ -57,6 +61,7 @@ Menu::Menu (sf::RenderWindow* app)
 	m_textureMenuFond.setRepeated(true);
 	m_spriteMenuFond.setTexture(m_textureMenuFond);
 
+	// -------------------    Sprite Size   ------------------- //
 	m_insideSpritePlay = new sf::IntRect(0,0,m_width,m_height);
 	m_insideSpriteMenuFond = new sf::IntRect(0,0,app->getSize().x,app->getSize().y);
 	m_insideSpriteOption = new sf::IntRect(0,0,m_width,m_height);
