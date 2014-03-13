@@ -36,16 +36,23 @@ private:
 
 	int m_movementStep;
 	Coordonate* m_coord;
-	sf::Texture m_texture;
-	sf::Sprite m_sprite;
-	sf::Sprite m_sprite1;
-	sf::Sprite m_sprite2;
-	static const int m_height = 66;
-	static const int m_width = 254;
-	static const int m_space = 90;
-	sf::IntRect* m_insideSprite;
-	sf::IntRect* m_insideSprite1;
-	sf::IntRect* m_insideSprite2;
+	sf::Texture m_textureMenuButton;
+	sf::Texture m_textureMenuFond;
+	sf::Sprite m_spritePlay;
+	sf::Sprite m_spriteOption;
+	sf::Sprite m_spriteExit;
+	sf::Font m_textFont;
+	sf::Text m_textPlay;
+	sf::Text m_textOption;
+	sf::Text m_textExit;
+	sf::Sprite m_spriteMenuFond;
+	static const int m_height = 250/2;
+	static const int m_width = 376;
+	static const int m_space = 150;
+	sf::IntRect* m_insideSpritePlay;
+	sf::IntRect* m_insideSpriteOption;
+	sf::IntRect* m_insideSpriteExit;
+	sf::IntRect* m_insideSpriteMenuFond;
 	sf::View m_DefaultView;
 
 public:

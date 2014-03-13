@@ -16,24 +16,51 @@ Menu::Menu (sf::RenderWindow* app)
 	m_DefaultView=m_app->getDefaultView();
 	m_movementStep = 5;
 	m_coord = new Coordonate(320,240);
-	if (!m_texture.loadFromFile("button.png"))
+
+	if (!m_textFont.loadFromFile("Flesh Wound.ttf"))  //Sketch Gothic School
 	{
-		cout << "error texture button" << endl;
+		cout << "error fontMenu" << endl;
 	}
-	m_sprite.setTexture(m_texture);
-	m_sprite.setPosition( (m_app->getSize ().x - m_width)/2, (m_app->getSize().y - m_height)/2 - m_space );
+	if (!m_textureMenuButton.loadFromFile("MenuButtonTexture.png"))
+	{
+		cout << "error texturePlay button" << endl;
+	}
+	if (!m_textureMenuFond.loadFromFile("stoneMenuFond.jpg"))
+	{
+		cout << "error textureMenuFond button" << endl;
+	}
 
+	int posButtonX = (m_app->getSize ().x - m_width)/2;
+	int posButtonY = (m_app->getSize().y - m_height)/2;
 
-	m_sprite1.setTexture(m_texture);
-	m_sprite1.setPosition( (m_app->getSize ().x - m_width)/2, (m_app->getSize().y - m_height)/2 );
+	m_textPlay= sf::Text("PLAY", m_textFont, 60);
+	m_textOption= sf::Text("OPTION", m_textFont, 60);
+	m_textExit= sf::Text("EXIT", m_textFont, 60);
 
+	m_textPlay.setPosition(m_app->getSize().x/2 - 50, posButtonY+m_height/5-m_space);
+	m_textOption.setPosition(m_app->getSize().x/2 - 80, posButtonY+m_height/5);
+	m_textExit.setPosition(m_app->getSize().x/2 - 50, posButtonY+m_height/5+m_space);
 
-	m_sprite2.setTexture(m_texture);
-	m_sprite2.setPosition( (m_app->getSize ().x - m_width)/2, (m_app->getSize().y - m_height)/2 + m_space);
+	m_textPlay.setColor(sf::Color(0,0,0));
+	m_textOption.setColor(sf::Color(0,0,0));
+	m_textExit.setColor(sf::Color(0,0,0));
 
-	m_insideSprite = new sf::IntRect(0,0,m_width,m_height);
-	m_insideSprite1 = new sf::IntRect(0,0,m_width,m_height);
-	m_insideSprite2 = new sf::IntRect(0,0,m_width,m_height);
+	m_spritePlay.setTexture(m_textureMenuButton);
+	m_spritePlay.setPosition( posButtonX, posButtonY - m_space );
+
+	m_spriteOption.setTexture(m_textureMenuButton);
+	m_spriteOption.setPosition( posButtonX, posButtonY );
+
+	m_spriteExit.setTexture(m_textureMenuButton);
+	m_spriteExit.setPosition( posButtonX, posButtonY + m_space);
+
+	m_textureMenuFond.setRepeated(true);
+	m_spriteMenuFond.setTexture(m_textureMenuFond);
+
+	m_insideSpritePlay = new sf::IntRect(0,0,m_width,m_height);
+	m_insideSpriteMenuFond = new sf::IntRect(0,0,app->getSize().x,app->getSize().y);
+	m_insideSpriteOption = new sf::IntRect(0,0,m_width,m_height);
+	m_insideSpriteExit = new sf::IntRect(0,0,m_width,m_height);
 }
 
 Menu::~Menu()
@@ -41,7 +68,7 @@ Menu::~Menu()
 
 }
 
-int Menu::run (sf::RenderWindow* _app)
+int Menu::run (sf::RenderWindow* app)
 {
 	sf::Event Event;
 	bool Running = true;
@@ -50,10 +77,10 @@ int Menu::run (sf::RenderWindow* _app)
 	//Clearing screen
 	while (Running)
 	{
-		sf::Vector2i mouse = sf::Mouse::getPosition(*(sf::Window*) _app);
+		sf::Vector2i mouse = sf::Mouse::getPosition(*(sf::Window*) app);
 
 		//Verifying events
-		while (_app->pollEvent(Event))
+		while (app->pollEvent(Event))
 		{
 			//Event event;
 			if (Event.type == sf::Event::Closed)
@@ -62,20 +89,21 @@ int Menu::run (sf::RenderWindow* _app)
 			}
 			if (Event.type == sf::Event::MouseButtonPressed)
 			{
-				//changement de Screen
+				//change Screen
 				if (Event.mouseButton.button == sf::Mouse::Left)
 				{
-					if (hitTest( (sf::FloatRect) m_sprite.getGlobalBounds(), m_width, m_height,  mouse))
+					//On button click
+					if (hitTest( (sf::FloatRect) m_spritePlay.getGlobalBounds(), m_width, m_height,  mouse))
 					{
 						nextScreen = 0;
 						Running = false;
 					}
-					if (hitTest( (sf::FloatRect) m_sprite1.getGlobalBounds(), m_width, m_height,  mouse))
+					if (hitTest( (sf::FloatRect) m_spriteOption.getGlobalBounds(), m_width, m_height,  mouse))
 					{
 						nextScreen = 2;
 						Running = false;
 					}
-					if (hitTest( (sf::FloatRect) m_sprite2.getGlobalBounds(), m_width, m_height,  mouse))
+					if (hitTest( (sf::FloatRect) m_spriteExit.getGlobalBounds(), m_width, m_height,  mouse))
 					{
 						nextScreen = -1;
 						Running = false;
@@ -85,42 +113,47 @@ int Menu::run (sf::RenderWindow* _app)
 		}
 
 		//--------------- BUTTONS MENU ---------------//
-		//Game
-		if (hitTest( (sf::FloatRect) m_sprite.getGlobalBounds(), m_width, m_height,  mouse))
+		//Hoover sprite
+		if (hitTest( (sf::FloatRect) m_spritePlay.getGlobalBounds(), m_width, m_height,  mouse))
 		{
-			m_insideSprite = new sf::IntRect(0,m_height,m_width,m_height);
+			m_insideSpritePlay = new sf::IntRect(0,m_height,m_width,m_height);
 		}
 		else
 		{
-			m_insideSprite = new sf::IntRect(0,0,m_width,m_height);
+			m_insideSpritePlay = new sf::IntRect(0,0,m_width,m_height);
 		}
-		if (hitTest( (sf::FloatRect) m_sprite1.getGlobalBounds(), m_width, m_height,  mouse))
+		if (hitTest( (sf::FloatRect) m_spriteOption.getGlobalBounds(), m_width, m_height,  mouse))
 		{
-			m_insideSprite1 = new sf::IntRect(0,m_height,m_width,m_height);
+			m_insideSpriteOption = new sf::IntRect(0,m_height,m_width,m_height);
 		}
 		else
 		{
-			m_insideSprite1 = new sf::IntRect(0,0,m_width,m_height);
+			m_insideSpriteOption = new sf::IntRect(0,0,m_width,m_height);
 		}
-		if (hitTest( (sf::FloatRect) m_sprite2.getGlobalBounds(), m_width, m_height,  mouse))
+		if (hitTest( (sf::FloatRect) m_spriteExit.getGlobalBounds(), m_width, m_height,  mouse))
 		{
-			m_insideSprite2 = new sf::IntRect(0,m_height,m_width,m_height);
+			m_insideSpriteExit = new sf::IntRect(0,m_height,m_width,m_height);
 		}
 		else
 		{
-			m_insideSprite2 = new sf::IntRect(0,0,m_width,m_height);
+			m_insideSpriteExit = new sf::IntRect(0,0,m_width,m_height);
 		}
-		m_sprite.setTextureRect(*m_insideSprite);
-		m_sprite1.setTextureRect(*m_insideSprite1);
-		m_sprite2.setTextureRect(*m_insideSprite2);
+		m_spritePlay.setTextureRect(*m_insideSpritePlay);
+		m_spriteOption.setTextureRect(*m_insideSpriteOption);
+		m_spriteExit.setTextureRect(*m_insideSpriteExit);
+		m_spriteMenuFond.setTextureRect(*m_insideSpriteMenuFond);
 
 		//Drawing
-		_app->clear(sf::Color(255, 255, 255));
-		_app->setView(m_DefaultView);
-		_app->draw(m_sprite1);
-		_app->draw(m_sprite);
-		_app->draw(m_sprite2);
-		_app->display();
+		app->clear(sf::Color(255, 255, 255));
+		app->setView(m_DefaultView);
+		app->draw(m_spriteMenuFond);
+		app->draw(m_spritePlay);
+		app->draw(m_spriteOption);
+		app->draw(m_spriteExit);
+		app->draw(m_textPlay);
+		app->draw(m_textOption);
+		app->draw(m_textExit);
+		app->display();
 		//Running = false;
 	}
 
