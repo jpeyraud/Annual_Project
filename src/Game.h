@@ -51,6 +51,7 @@ private:
 	float m_elapsed_speed;
 	float m_deplacement;
 	int m_i;
+	bool Running;
 
 public:
 	Game (sf::RenderWindow *app);

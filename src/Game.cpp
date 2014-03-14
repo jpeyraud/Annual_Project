@@ -11,7 +11,7 @@
 
 Game::Game (sf::RenderWindow *app)
 {
-
+	Running = false;
 	m_movement_step = 5;
 	m_coord= new Coordonate(320,240);
 	ifstream mapFile("map.txt");
@@ -30,7 +30,8 @@ Game::Game (sf::RenderWindow *app)
 	m_monster = new Monster(1, 5, "Loup", "character.png", m_spawnX, m_spawnY);
 	int tile;
 
-	while(i<m_tailleMap){
+	while(i<m_tailleMap)
+	{
 		mapFile >> tile;
 		m_level.push_back(tile);
 		i++;
@@ -50,7 +51,7 @@ Game::~Game()
 
 int Game::run (sf::RenderWindow *app){
 
-	bool Running = true;
+	Running = true;
 	while(Running){
 
 		while (app->isOpen())

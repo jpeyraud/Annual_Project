@@ -31,22 +31,9 @@ Menu::Menu (sf::RenderWindow* app)
 		cout << "error textureMenuFond button" << endl;
 	}
 
-	int posButtonX = (m_app->getSize ().x - m_width)/2;
+	int posButtonX = (m_app->getSize().x - m_width)/2;
 	int posButtonY = (m_app->getSize().y - m_height)/2;
 
-
-	// -------------------    Text    ------------------- //
-	m_textPlay= sf::Text("PLAY", m_textFont, 60);
-	m_textOption= sf::Text("OPTION", m_textFont, 60);
-	m_textExit= sf::Text("EXIT", m_textFont, 60);
-
-	m_textPlay.setPosition(m_app->getSize().x/2 - 70, posButtonY+m_height/5-m_space);
-	m_textOption.setPosition(m_app->getSize().x/2 - 110, posButtonY+m_height/5);
-	m_textExit.setPosition(m_app->getSize().x/2 - 70, posButtonY+m_height/5+m_space);
-
-	m_textPlay.setColor(sf::Color(0,0,0));
-	m_textOption.setColor(sf::Color(0,0,0));
-	m_textExit.setColor(sf::Color(0,0,0));
 
 	// -------------------    Sprite    ------------------- //
 	m_spritePlay.setTexture(m_textureMenuButton);
@@ -60,6 +47,20 @@ Menu::Menu (sf::RenderWindow* app)
 
 	m_textureMenuFond.setRepeated(true);
 	m_spriteMenuFond.setTexture(m_textureMenuFond);
+
+
+	// -------------------    Text    ------------------- //
+	m_textPlay= sf::Text("PLAY", m_textFont, 60);
+	m_textOption= sf::Text("OPTION", m_textFont, 60);
+	m_textExit= sf::Text("EXIT", m_textFont, 60);
+
+	m_textPlay.setPosition(posButtonX+m_spritePlay.getLocalBounds().width/2-m_textPlay.getLocalBounds().width/2, posButtonY-m_space + m_textPlay.getLocalBounds().height/2);
+	m_textOption.setPosition(posButtonX+m_spriteOption.getLocalBounds().width/2-m_textOption.getLocalBounds().width/2, posButtonY + m_textOption.getLocalBounds().height/2);
+	m_textExit.setPosition(posButtonX+m_spriteExit.getLocalBounds().width/2-m_textExit.getLocalBounds().width/2, posButtonY+m_space + m_textExit.getLocalBounds().height/2);
+
+	m_textPlay.setColor(sf::Color(0,0,0));
+	m_textOption.setColor(sf::Color(0,0,0));
+	m_textExit.setColor(sf::Color(0,0,0));
 
 	// -------------------    Sprite Size   ------------------- //
 	m_insideSpritePlay = new sf::IntRect(0,0,m_width,m_height);
