@@ -18,7 +18,7 @@ Menu::Menu (sf::RenderWindow* app)
 	m_coord = new Coordonate(320,240);
 
 	// -------------------    Loading Font & Texture    ------------------- //
-	if (!m_textFont.loadFromFile("OldLondon.ttf"))  //Sketch Gothic School
+	if (!m_textFont.loadFromFile("BLKCHCRY.ttf"))  //Sketch Gothic School
 	{
 		cout << "error fontMenu" << endl;
 	}

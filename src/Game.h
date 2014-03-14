@@ -44,9 +44,11 @@ private:
 	int m_spawnY;
 	vector<int> m_level;
 	sf::Vector2u m_visibility;
-	sf::Clock m_clock;
+	sf::Clock m_clock_speed;
+	sf::Clock m_clock_monster;
+	float m_elapsed_monster;
 	float m_speed;
-	float m_elapsed;
+	float m_elapsed_speed;
 	float m_deplacement;
 	int m_i;
 	bool Running;
