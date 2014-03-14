@@ -29,7 +29,8 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 
 
 	//Background de l'HUD
-	m_background_texture.loadFromFile("HUDsprite.jpg", sf::IntRect(5, 3, 492, 49));//La texture
+	m_background_texture.loadFromFile("stoneMenuFond.jpg");//La texture
+	m_background_texture.setRepeated(true);
 	m_button_texture.loadFromFile("button_texture.png");
 
 	//Le contenant (taille en fonctionde de la visibility)
@@ -39,7 +40,7 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 
 
 	//On commence par charger la police de texte
-	m_font.loadFromFile("Cardinal.ttf");
+	m_font.loadFromFile("BLKCHCRY.ttf");
 
 	/*
 	 * Transtypage int->String
@@ -157,37 +158,37 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 
 		m_Power.setFont(m_font);//Assignation police.
 		m_Power.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
-		m_Power.setStyle(sf::Text::Bold);//Assignation Style.
+
 		m_Power.setColor(sf::Color::Black);//Assignation couleur.
 		m_Power.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.055, m_coord->getCoordonate()[1]+m_visibility.y*0.15);//Assignation position
 
 		m_Agility.setFont(m_font);//Assignation police.
 		m_Agility.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
-		m_Agility.setStyle(sf::Text::Bold);//Assignation Style.
+
 		m_Agility.setColor(sf::Color::Black);//Assignation couleur.
 		m_Agility.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.16, m_coord->getCoordonate()[1]+m_visibility.y*0.15);//Assignation position
 
 		m_Toughness.setFont(m_font);//Assignation police.
 		m_Toughness.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
-		m_Toughness.setStyle(sf::Text::Bold);//Assignation Style.
+
 		m_Toughness.setColor(sf::Color::Black);//Assignation couleur.
 		m_Toughness.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.27, m_coord->getCoordonate()[1]+m_visibility.y*0.15);//Assignation position
 
 		m_Level.setFont(m_font);//Assignation police.
 		m_Level.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
-		m_Level.setStyle(sf::Text::Bold);//Assignation Style.
+
 		m_Level.setColor(sf::Color::Black);//Assignation couleur.
 		m_Level.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.055, m_coord->getCoordonate()[1]+m_visibility.y*0.55);//Assignation position
 
 		m_World.setFont(m_font);//Assignation police.
 		m_World.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
-		m_World.setStyle(sf::Text::Bold);//Assignation Style.
+
 		m_World.setColor(sf::Color::Black);//Assignation couleur.
 		m_World.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.655, m_coord->getCoordonate()[1]+m_visibility.y*0.15);//Assignation position
 
 		m_Monster_Rank.setFont(m_font);//Assignation police.
 		m_Monster_Rank.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
-		m_Monster_Rank.setStyle(sf::Text::Bold);//Assignation Style.
+
 		m_Monster_Rank.setColor(sf::Color::Black);//Assignation couleur.
 		m_Monster_Rank.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.655, m_coord->getCoordonate()[1]+m_visibility.y*0.55);//Assignation position
 
