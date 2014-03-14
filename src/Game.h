@@ -49,6 +49,7 @@ private:
 	float m_elapsed;
 	float m_deplacement;
 	int m_i;
+	bool Running;
 
 public:
 	Game (sf::RenderWindow *app);
