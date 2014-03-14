@@ -119,7 +119,7 @@ int Menu::run (sf::RenderWindow* app)
 		}
 
 		//--------------- BUTTONS MENU ---------------//
-		//Hoover sprite
+		//Hoover sprite or not
 		if (hitTest( (sf::FloatRect) m_spritePlay.getGlobalBounds(), m_width, m_height,  mouse))
 		{
 			m_insideSpritePlay = new sf::IntRect(0,m_height,m_width,m_height);
