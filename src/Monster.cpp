@@ -3,25 +3,25 @@
 
 
 
-Monster::Monster(int id, int coeffpower, string name, string image, int posx, int posy) : Creature()
+Monster::Monster(int id, int coeffpower, string name, string image, int posx, int posy, int xDepart, int yDepart) : Creature()
 {
 	m_id = id;
 	m_coeffpower = coeffpower;
 
 	m_name = name;
 	m_position.setCoordonate(posx,posy);
-	m_tabOrientation[0] = sf::IntRect(96,0,32,32);
-	m_tabOrientation[1] = sf::IntRect(128,0,32,32);
-	m_tabOrientation[2] = sf::IntRect(160,0,32,32);
-	m_tabOrientation[3] = sf::IntRect(96,32,32,32);
-	m_tabOrientation[4] = sf::IntRect(128,32,32,32);
-	m_tabOrientation[5] = sf::IntRect(160,32,32,32);
-	m_tabOrientation[6] = sf::IntRect(96,64,32,32);
-	m_tabOrientation[7] = sf::IntRect(128,64,32,32);
-	m_tabOrientation[8] = sf::IntRect(160,64,32,32);
-	m_tabOrientation[9] = sf::IntRect(96,96,32,32);
-	m_tabOrientation[10] = sf::IntRect(128,96,32,32);
-	m_tabOrientation[11] = sf::IntRect(160,96,32,32);
+	m_tabOrientation[0] = sf::IntRect(xDepart,yDepart,32,32);
+	m_tabOrientation[1] = sf::IntRect(xDepart+32,yDepart,32,32);
+	m_tabOrientation[2] = sf::IntRect(xDepart+64,yDepart,32,32);
+	m_tabOrientation[3] = sf::IntRect(xDepart,yDepart+32,32,32);
+	m_tabOrientation[4] = sf::IntRect(xDepart+32,yDepart+32,32,32);
+	m_tabOrientation[5] = sf::IntRect(xDepart+64,yDepart+32,32,32);
+	m_tabOrientation[6] = sf::IntRect(xDepart,yDepart+64,32,32);
+	m_tabOrientation[7] = sf::IntRect(xDepart+32,yDepart+64,32,32);
+	m_tabOrientation[8] = sf::IntRect(xDepart+64,yDepart+64,32,32);
+	m_tabOrientation[9] = sf::IntRect(xDepart,yDepart+96,32,32);
+	m_tabOrientation[10] = sf::IntRect(xDepart+32,yDepart+96,32,32);
+	m_tabOrientation[11] = sf::IntRect(xDepart+64,yDepart+96,32,32);
 	m_texture.loadFromFile(image, sf::IntRect(96,0,192,128));
 	m_S_orientation.setTexture(m_texture);
 	m_S_orientation.setTextureRect(m_tabOrientation[1]);

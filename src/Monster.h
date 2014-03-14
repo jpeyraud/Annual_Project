@@ -13,7 +13,7 @@ protected:
 	int m_id;
 
 public:
-	Monster(int id, int coeffpower, string name, string image, int posx, int posy);
+	Monster(int id, int coeffpower, string name, string image, int posx, int posy, int xDepart, int yDepart);
 	void move(float mvt);
 	void attack();
 
