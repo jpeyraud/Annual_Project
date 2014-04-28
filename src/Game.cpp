@@ -104,9 +104,11 @@ int Game::run (sf::RenderWindow *app){
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
 				return 1;
 			}
-
-			m_monster->move(m_deplacement);
-
+			m_elapsed_monster=m_clock_monster.getElapsedTime().asSeconds();
+			if(m_elapsed_monster>0.15){
+				m_monster->move(m_deplacement);
+				m_clock_monster.restart();
+			}
 			app->clear();
 			m_vueHaute->Draw(app, m_map);
 			app->draw(m_player->getSprite());
