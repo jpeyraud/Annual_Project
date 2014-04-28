@@ -48,7 +48,7 @@ bool Map::load(const string& tileset, sf::Vector2u tileSize,  vector<int> tiles,
 
         m_width=width;
         m_height=height;
-        this->loadObstacle();
+        loadObstacle();
         return true;
     }
 
@@ -68,21 +68,37 @@ void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
    }
 
 void Map::loadObstacle(){
-	m_mapObstacle=new bool*[m_width];
-	for (int i=0;i<m_width;i++){
-		m_mapObstacle[i]=new bool[m_height];
+	m_mapObstacle=new bool*[2048];
+	for (int i=0;i<2048;i++){
+		m_mapObstacle[i]=new bool[2048];
 	}
-	for (int i=0;i<m_width;i++){
-		for (int j=0;j<m_height;j++){
+	for (int i=0;i<2048;i++){
+		for (int j=0;j<2048;j++){
 			m_mapObstacle[i][j]=0;
 		}
 	}
+	m_mapObstacle[500][1024]=1;
+	m_mapObstacle[1024][500]=1;
 }
 
 void Map::setObstacle(Coordonate *coord){
 	if(coord->getCoordonate()[0]<m_width && coord->getCoordonate()[1]<m_height){
 		m_mapObstacle[coord->getCoordonate()[0]][coord->getCoordonate()[1]]=1;
 	}
+
+}
+
+bool **Map::getMapObstacle()
+{
+	return m_mapObstacle;
+}
+
+int Map::getWidth(){
+	return m_width;
+}
+
+int Map::getHeight(){
+	return m_height;
 }
 
 

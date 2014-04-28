@@ -71,12 +71,14 @@ int Game::run (sf::RenderWindow *app){
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 			{
+				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
 				m_vueHaute->Move(-m_deplacement, 0);
 				m_minimap->Move(-m_deplacement, 0);
 				m_player->instantHeal(0.1);
 				m_player->move(sf::Keyboard::Left, m_deplacement);
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)|| sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
 				m_vueHaute->Move(m_deplacement, 0);
 				m_minimap->Move(m_deplacement, 0);
 				m_player->instantHeal(0.1);
@@ -84,6 +86,7 @@ int Game::run (sf::RenderWindow *app){
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 			{
+				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
 				m_vueHaute->Move(0, -m_deplacement);
 				m_minimap->Move(0, -m_deplacement);
 				m_player->takeDamage(0.1);
@@ -91,6 +94,7 @@ int Game::run (sf::RenderWindow *app){
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)|| sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 			{
+				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
 				m_vueHaute->Move(0, m_deplacement);
 				m_minimap->Move(0, m_deplacement);
 				m_player->takeDamage(0.1);

@@ -60,11 +60,16 @@ void Creature::instantHeal(float heal){
 
 // Returns the number of current points of life
 float Creature::getLife() const{
-	return this->m_life[0];
+	return m_life[0];
 }
 
 string Creature::getName() const{
-	return this->m_name;
+	return m_name;
+}
+
+//returns the orientation of the creature
+int Creature::getOrientation() const{
+	return m_orientation;
 }
 
 // Changes Sprite
@@ -74,7 +79,7 @@ void Creature::setSprite(int i){
 }
 
 sf::Sprite Creature::getSprite() const{
-	return this->m_S_orientation;
+	return m_S_orientation;
 }
 
 /* namespace std */
