@@ -18,6 +18,7 @@
 #include "Player.h"
 #include "Coordonate.h"
 #include "Monster.h"
+#include "EnvironmentObstacle.h"
 
 namespace
 {
