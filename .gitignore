@@ -15,3 +15,43 @@
 #others
 *.exe
 *.cproject
+/Cardinal.ttf
+/Cartographer.ttf
+/Crusades.ttf
+/HUDsprite.jpg
+/.project
+/Flesh Wound.ttf
+/HUDsprite.png
+/HUDsprite.xcf
+/King Arthur Legend.ttf
+/MenuButtonTexture.PNG
+/MiniMapsprite.jpg
+/Minimap.JPG
+/OldLondon.ttf
+/PrinceValiant.ttf
+/Sketch Gothic School.ttf
+/Tekton-Bold.otf
+/Thumbs.db
+/button.png
+/button_css_sprite.jpg
+/button_texture.png
+/character.png
+/map.txt
+/maptest.txt
+/medieval_texture.png
+/makefile
+/objects.mk
+/sources.mk
+/stoneMenuFond.jpg
+/stuff.png
+/tilea4.png
+/sfml-audio-2.dll
+/sfml-audio-d-2.dll
+/sfml-graphics-2.dll
+/sfml-graphics-d-2.dll
+/sfml-network-2.dll
+/sfml-network-d-2.dll
+/sfml-system-2.dll
+/sfml-system-d-2.dll
+/sfml-window-2.dll
+/sfml-window-d-2.dll
