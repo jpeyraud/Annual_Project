@@ -68,17 +68,16 @@ void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
    }
 
 void Map::loadObstacle(){
-	m_mapObstacle=new bool*[2048];
-	for (int i=0;i<2048;i++){
+	m_mapObstacle=new bool*[1024];
+	for (int i=0;i<1024;i++){
 		m_mapObstacle[i]=new bool[2048];
 	}
-	for (int i=0;i<2048;i++){
+	for (int i=0;i<1024;i++){
 		for (int j=0;j<2048;j++){
 			m_mapObstacle[i][j]=0;
 		}
 	}
 	m_mapObstacle[500][1024]=1;
-	m_mapObstacle[1024][500]=1;
 }
 
 void Map::setObstacle(Coordonate *coord){
