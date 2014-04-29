@@ -37,7 +37,8 @@ Menu::Menu (sf::RenderWindow* app)
 	{
 		cout << "error openning music menu" << endl;
 	}
-	m_Music.setVolume(40);
+	m_Music.setVolume(20);
+	m_Music.setLoop(true);
 
 
 	int posButtonX = (m_app->getSize().x - m_width)/2;
