@@ -33,11 +33,11 @@ Menu::Menu (sf::RenderWindow* app)
 	}
 
 	// -------------------    Loading Sound & Music    ------------------- //
-	if (!m_Music.openFromFile("DST-3rdBallad.mp3"))
+	if (!m_Music.openFromFile("DST-3rdBallad.ogg"))
 	{
 		cout << "error openning music menu" << endl;
 	}
-	m_Music.setVolume(50);
+	m_Music.setVolume(40);
 
 
 	int posButtonX = (m_app->getSize().x - m_width)/2;
@@ -173,7 +173,7 @@ int Menu::run (sf::RenderWindow* app)
 		//Running = false;
 	}
 
-
+	m_Music.stop();
 	//Exit the Application
 	return nextScreen;
 }
