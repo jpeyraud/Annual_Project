@@ -130,6 +130,8 @@ int Game::run (sf::RenderWindow *app){
 			}
 			m_elapsed_monster=m_clock_monster.getElapsedTime().asSeconds();
 			if(m_elapsed_monster>0.15){
+				m_deplacement=m_speed*m_elapsed_speed;
+				Collision::getCollision((Creature *)m_monster,m_map,m_deplacement);
 				m_monster->move(m_deplacement);
 				m_clock_monster.restart();
 			}
