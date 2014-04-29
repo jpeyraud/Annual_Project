@@ -3,8 +3,9 @@
 
 
 
-Monster::Monster(int id, int coeffpower, string name, string image, int posx, int posy, int xDepart, int yDepart) : Creature()
+Monster::Monster(int id, int coeffpower, string name, string image, int posx, int posy, int xDepart, int yDepart)
 {
+	Creature();
 	m_id = id;
 	m_coeffpower = coeffpower;
 

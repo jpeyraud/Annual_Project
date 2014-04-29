@@ -23,6 +23,9 @@ public:
 
     bool load(const string& tileset, sf::Vector2u tileSize, vector<int> tiles, unsigned int width, unsigned int height);
     void setObstacle(Coordonate* coord);
+    bool **getMapObstacle();
+    int getWidth();
+    int getHeight();
 
 private:
 
@@ -31,8 +34,8 @@ private:
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;
     bool** m_mapObstacle;
-    unsigned int m_width;
-    unsigned int m_height;
+    int m_width;
+    int m_height;
 
 
 };
