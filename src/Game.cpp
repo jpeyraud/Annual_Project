@@ -61,13 +61,14 @@ Game::~Game()
 }
 
 int Game::run (sf::RenderWindow *app){
-
+	float deplacement;
 	Running = true;
 	m_Music.play();
 	while(Running){
 
 		while (app->isOpen())
 		{
+
 			m_elapsed_speed = m_clock_speed.restart().asSeconds();
 			m_deplacement=m_speed*m_elapsed_speed;
 			// on gère les évènements
@@ -87,40 +88,40 @@ int Game::run (sf::RenderWindow *app){
 			{
 				if (m_player->getOrientation()!=4&&m_player->getOrientation()!=5&&m_player->getOrientation()!=3)
 					m_player->setOrientation(4);
-				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
-				m_vueHaute->Move(-m_deplacement, 0);
-				m_minimap->Move(-m_deplacement, 0);
+				deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
+				m_vueHaute->Move(-deplacement, 0);
+				m_minimap->Move(-deplacement, 0);
 				m_player->instantHeal(0.1);
-				m_player->move(sf::Keyboard::Left, m_deplacement);
+				m_player->move(sf::Keyboard::Left, deplacement);
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)|| sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 				if (m_player->getOrientation()!=6&&m_player->getOrientation()!=7&&m_player->getOrientation()!=8)
 					m_player->setOrientation(7);
-				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
-				m_vueHaute->Move(m_deplacement, 0);
-				m_minimap->Move(m_deplacement, 0);
+				deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
+				m_vueHaute->Move(deplacement, 0);
+				m_minimap->Move(deplacement, 0);
 				m_player->instantHeal(0.1);
-				m_player->move(sf::Keyboard::Right, m_deplacement);
+				m_player->move(sf::Keyboard::Right, deplacement);
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 			{
 				if (m_player->getOrientation()!=9&&m_player->getOrientation()!=10&&m_player->getOrientation()!=11)
 					m_player->setOrientation(10);
-				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
-				m_vueHaute->Move(0, -m_deplacement);
-				m_minimap->Move(0, -m_deplacement);
+				deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
+				m_vueHaute->Move(0, -deplacement);
+				m_minimap->Move(0, -deplacement);
 				m_player->takeDamage(0.1);
-				m_player->move(sf::Keyboard::Up, m_deplacement);
+				m_player->move(sf::Keyboard::Up, deplacement);
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)|| sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 			{
 				if (m_player->getOrientation()!=0&&m_player->getOrientation()!=1&&m_player->getOrientation()!=2)
 					m_player->setOrientation(1);
-				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
-				m_vueHaute->Move(0, m_deplacement);
-				m_minimap->Move(0, m_deplacement);
+				deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
+				m_vueHaute->Move(0, deplacement);
+				m_minimap->Move(0, deplacement);
 				m_player->takeDamage(0.1);
-				m_player->move(sf::Keyboard::Down, m_deplacement);
+				m_player->move(sf::Keyboard::Down, deplacement);
 
 			}
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
@@ -130,9 +131,8 @@ int Game::run (sf::RenderWindow *app){
 			}
 			m_elapsed_monster=m_clock_monster.getElapsedTime().asSeconds();
 			if(m_elapsed_monster>0.15){
-				m_deplacement=m_speed*m_elapsed_speed;
-				Collision::getCollision((Creature *)m_monster,m_map,m_deplacement);
-				m_monster->move(m_deplacement);
+				deplacement=Collision::getCollision((Creature *)m_monster,m_map,m_deplacement);
+				m_monster->move(deplacement);
 				m_clock_monster.restart();
 			}
 			app->clear();
