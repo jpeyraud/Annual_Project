@@ -23,44 +23,46 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 	std::cout<<top<<" "<<left<<std::endl;
 	if (character->getOrientation()/3==0)//sud
 	{
+		std::cout<<"sud"<<std::endl;
 		for(int i=0;i<=int(speed);i++){
 			if (top+i+height==1023){
 				speed=float(i);
 				break;
 			}
-			if(mapObstacle[top+i][left]==1){
-				speed=float(i);
+			if(mapObstacle[top+i+height][left]==1){
+				speed=float(i-1);
 				break;
 			}
 		}
 	}
-	else if(character->getOrientation()/3==1)//sud-ouest
+	/*else if(character->getOrientation()/3==1)//sud-ouest
 	{
 		for(int i=0;i<=int(speed);i++){
 			if (top+i+height==1023 || left-i==0){
 				speed=float(i);
 				break;
 			}
-			if(mapObstacle[top+i][left-i]==1){
-				speed=float(i);
+			if(mapObstacle[top+i+height][left-i]==1){
+				speed=float(i-1);
 				break;
 			}
 		}
-	}
-	else if(character->getOrientation()/3==2)//ouest
+	}*/
+	else if(character->getOrientation()/3==1)//ouest
 	{
+		std::cout<<"ouest"<<std::endl;
 		for(int i=0;i<=int(speed);i++){
 			if (left-i==0){
 				speed=float(i);
 				break;
 			}
 			if(mapObstacle[top][left-i]==1){
-				speed=float(i);
+				speed=float(i-1);
 				break;
 			}
 		}
 	}
-	else if(character->getOrientation()/3==3)//nord-ouest
+	/*else if(character->getOrientation()/3==3)//nord-ouest
 	{
 		for(int i=0;i<=int(speed);i++){
 			if (top-i==0|| left-i==0){
@@ -68,13 +70,14 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 				break;
 			}
 			if(mapObstacle[top-i][left-i]==1){
-				speed=float(i);
+				speed=float(i-1);
 				break;
 			}
 		}
-	}
-	else if(character->getOrientation()/3==4)//nord
+	}*/
+	else if(character->getOrientation()/3==3)//nord
 	{
+		std::cout<<"nord"<<std::endl;
 		for(int i=0;i<=int(speed);i++){
 
 			if (top-i==0){
@@ -82,50 +85,51 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 				break;
 			}
 			if(mapObstacle[top-i][left]==1){
-				speed=float(i);
+				speed=float(i-1);
 				break;
 			}
 		}
 	}
-	else if(character->getOrientation()/3==5)//nord-est
+	/*else if(character->getOrientation()/3==5)//nord-est
 	{
 		for(int i=0;i<=int(speed);i++){
 			if (top-i==0 || left+i+width==2047){
 				speed=float(i);
 				break;
 			}
-			if(mapObstacle[top-i][left+i]==1){
-				speed=float(i);
+			if(mapObstacle[top-i][left+i+width]==1){
+				speed=float(i-1);
 				break;
 			}
 		}
-	}
-	else if(character->getOrientation()/3==6)//est
+	}*/
+	else if(character->getOrientation()/3==2)//est
 	{
+		std::cout<<"est"<<std::endl;
 		for(int i=0;i<=int(speed);i++){
 			if (left+i+width==2047){
 				speed=float(i);
 				break;
 			}
-			if(mapObstacle[top][left+i]==1){
+			if(mapObstacle[top][left+i+width]==1){
 				speed=float(i);
 				break;
 			}
 		}
 	}
-	else if(character->getOrientation()/3==7)//sud-est
+	/*else if(character->getOrientation()/3==7)//sud-est
 	{
 		for(int i=0;i<=int(speed);i++){
 			if (top+i+height==1023 || left+i+width==2047){
 				speed=float(i);
 				break;
 			}
-			if(mapObstacle[top+i][left+i]==1){
+			if(mapObstacle[top+i+height][left+i+width]==1){
 				speed=float(i);
 				break;
 			}
 		}
-	}
+	}*/
 	return speed;
 }
 
@@ -141,3 +145,5 @@ float Collision::enterInCollision(sf::Sprite character,sf::Sprite Item){
 		return true;
 	}
 }
+
+

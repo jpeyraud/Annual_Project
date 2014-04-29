@@ -29,6 +29,7 @@ public:
 	void setSprite(int i);
 	sf::Sprite getSprite() const;
 	int getOrientation() const;
+	void setOrientation(int i);
 
 protected :
 	string m_name;
