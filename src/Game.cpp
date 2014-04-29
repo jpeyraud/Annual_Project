@@ -18,7 +18,8 @@ Game::Game (sf::RenderWindow *app)
 	{
 		cout << "error openning music menu" << endl;
 	}
-	m_Music.setVolume(40);
+	m_Music.setVolume(20);
+	m_Music.setLoop(true);
 
 	m_movement_step = 5;
 	m_coord= new Coordonate(320,240);
