@@ -12,6 +12,14 @@
 Game::Game (sf::RenderWindow *app)
 {
 	Running = false;
+
+	// -------------------    Loading Sound & Music    ------------------- //
+	if (!m_Music.openFromFile("DST-AmbientKingdom.wav"))
+	{
+		cout << "error openning music menu" << endl;
+	}
+	m_Music.setVolume(40);
+
 	m_movement_step = 5;
 	m_coord= new Coordonate(320,240);
 	ifstream mapFile("map.txt");
@@ -42,6 +50,8 @@ Game::Game (sf::RenderWindow *app)
 	m_map.load("tilea4.png", sf::Vector2u(32, 32), m_level, 64, 32);
 
 
+
+
 }
 
 Game::~Game()
@@ -52,6 +62,7 @@ Game::~Game()
 int Game::run (sf::RenderWindow *app){
 
 	Running = true;
+	m_Music.play();
 	while(Running){
 
 		while (app->isOpen())
@@ -65,8 +76,10 @@ int Game::run (sf::RenderWindow *app){
 				if(event.type == sf::Event::Closed)
 					return -1;
 				if (event.type == sf::Event::LostFocus)
+				{
+					m_Music.stop();
 					return 1;
-
+				}
 			}
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
@@ -109,7 +122,9 @@ int Game::run (sf::RenderWindow *app){
 				m_player->move(sf::Keyboard::Down, m_deplacement);
 
 			}
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			{
+				m_Music.stop();
 				return 1;
 			}
 			m_elapsed_monster=m_clock_monster.getElapsedTime().asSeconds();
@@ -129,7 +144,8 @@ int Game::run (sf::RenderWindow *app){
 		}
 	}
 
-	//Never reaching this point normally, but just in case, exit the application
+	m_Music.stop();
+	//Exit this screen
 	return -1;
 }
 

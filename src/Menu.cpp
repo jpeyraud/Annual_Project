@@ -1,3 +1,4 @@
+
 /*
  * Menu.cpp
  *
@@ -18,7 +19,7 @@ Menu::Menu (sf::RenderWindow* app)
 	m_coord = new Coordonate(320,240);
 
 	// -------------------    Loading Font & Texture    ------------------- //
-	if (!m_textFont.loadFromFile("OldLondon.ttf"))  //Sketch Gothic School
+	if (!m_textFont.loadFromFile("BLKCHCRY.ttf"))  //Sketch Gothic School
 	{
 		cout << "error fontMenu" << endl;
 	}
@@ -30,6 +31,14 @@ Menu::Menu (sf::RenderWindow* app)
 	{
 		cout << "error textureMenuFond button" << endl;
 	}
+
+	// -------------------    Loading Sound & Music    ------------------- //
+	if (!m_Music.openFromFile("DST-3rdBallad.ogg"))
+	{
+		cout << "error openning music menu" << endl;
+	}
+	m_Music.setVolume(40);
+
 
 	int posButtonX = (m_app->getSize().x - m_width)/2;
 	int posButtonY = (m_app->getSize().y - m_height)/2;
@@ -79,6 +88,7 @@ int Menu::run (sf::RenderWindow* app)
 	sf::Event Event;
 	bool Running = true;
 	int nextScreen=-1;
+	m_Music.play();
 
 	//Clearing screen
 	while (Running)
@@ -163,7 +173,7 @@ int Menu::run (sf::RenderWindow* app)
 		//Running = false;
 	}
 
-
+	m_Music.stop();
 	//Exit the Application
 	return nextScreen;
 }
@@ -174,5 +184,3 @@ bool Menu::hitTest(sf::FloatRect rect, int height, int width, sf::Vector2i mouse
 	return (mouse.x > rect.left) && (mouse.x < rect.left + height) &&
 			(mouse.y > rect.top)  && (mouse.y < rect.top + width);
 }
-
-

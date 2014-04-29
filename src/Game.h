@@ -11,6 +11,7 @@
 #include <exception>
 #include <cmath>
 #include <fstream>
+#include <SFML/Audio.hpp>
 #include "cScreen.cpp"
 #include "HighView.h"
 #include "HUD.h"
@@ -24,6 +25,8 @@ namespace
 {
 	using std::ifstream;
 	using std::vector;
+	using std::cout;
+	using std::endl;
 }
 
 class Game : public cScreen
@@ -53,6 +56,7 @@ private:
 	float m_deplacement;
 	int m_i;
 	bool Running;
+	sf::Music m_Music;
 
 public:
 	Game (sf::RenderWindow *app);
