@@ -15,6 +15,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
 #include <fstream>
 #include "cScreen.cpp"
 #include "Coordonate.h"
@@ -54,6 +55,7 @@ private:
 	sf::IntRect* m_insideSpriteExit;
 	sf::IntRect* m_insideSpriteMenuFond;
 	sf::View m_DefaultView;
+	sf::Music m_Music;
 
 public:
 	Menu (sf::RenderWindow* App);

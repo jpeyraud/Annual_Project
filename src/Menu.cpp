@@ -31,6 +31,14 @@ Menu::Menu (sf::RenderWindow* app)
 		cout << "error textureMenuFond button" << endl;
 	}
 
+	// -------------------    Loading Sound & Music    ------------------- //
+	if (!m_Music.openFromFile("DST-3rdBallad.mp3"))
+	{
+		cout << "error openning music menu" << endl;
+	}
+	m_Music.setVolume(50);
+
+
 	int posButtonX = (m_app->getSize().x - m_width)/2;
 	int posButtonY = (m_app->getSize().y - m_height)/2;
 
@@ -79,6 +87,7 @@ int Menu::run (sf::RenderWindow* app)
 	sf::Event Event;
 	bool Running = true;
 	int nextScreen=-1;
+	m_Music.play();
 
 	//Clearing screen
 	while (Running)
