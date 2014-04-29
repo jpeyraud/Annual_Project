@@ -79,6 +79,20 @@ void Map::loadObstacle(){
 	}
 }
 
+void Map::setSpiteObstacle (sf::Sprite sp){
+	int top = sp.getGlobalBounds().top;
+	int left = sp.getGlobalBounds().left;
+	int width = sp.getGlobalBounds().width;
+	int height = sp.getGlobalBounds().height;
+
+	for (int x=top;x<top+height;x++){
+		for (int y=left;y<left+width;y++){
+			setObstacle(new Coordonate(x,y));
+		}
+	}
+}
+
+
 void Map::setObstacle(Coordonate *coord){
 	if(coord->getCoordonate()[0]<m_width && coord->getCoordonate()[1]<m_height){
 		m_mapObstacle[coord->getCoordonate()[0]][coord->getCoordonate()[1]]=1;

@@ -23,6 +23,7 @@ public:
 
     bool load(const string& tileset, sf::Vector2u tileSize, vector<int> tiles, unsigned int width, unsigned int height);
     void setObstacle(Coordonate* coord);
+    void Map::setSpiteObstacle (sf::Sprite sp);
     bool **getMapObstacle();
     int getWidth();
     int getHeight();

@@ -20,10 +20,8 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 	int left=(int)round(character->getSprite().getGlobalBounds().left);
 	int height=(int)round(character->getSprite().getGlobalBounds().height);
 	int width=(int)round(character->getSprite().getGlobalBounds().width);
-	std::cout<<top<<" "<<left<<std::endl;
 	if (character->getOrientation()/3==0)//sud
 	{
-		std::cout<<"sud"<<std::endl;
 		for(int i=0;i<=int(speed);i++){
 			if (top+i+height==1023){
 				speed=float(i);
@@ -50,7 +48,6 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 	}*/
 	else if(character->getOrientation()/3==1)//ouest
 	{
-		std::cout<<"ouest"<<std::endl;
 		for(int i=0;i<=int(speed);i++){
 			if (left-i==0){
 				speed=float(i);
@@ -77,7 +74,6 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 	}*/
 	else if(character->getOrientation()/3==3)//nord
 	{
-		std::cout<<"nord"<<std::endl;
 		for(int i=0;i<=int(speed);i++){
 
 			if (top-i==0){
@@ -105,7 +101,6 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 	}*/
 	else if(character->getOrientation()/3==2)//est
 	{
-		std::cout<<"est"<<std::endl;
 		for(int i=0;i<=int(speed);i++){
 			if (left+i+width==2047){
 				speed=float(i);
