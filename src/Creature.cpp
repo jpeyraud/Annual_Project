@@ -72,6 +72,11 @@ int Creature::getOrientation() const{
 	return m_orientation;
 }
 
+//sets the orientation of the creature
+void Creature::setOrientation(int i){
+	m_orientation=i;
+}
+
 // Changes Sprite
 /* Use during move */
 void Creature::setSprite(int i){

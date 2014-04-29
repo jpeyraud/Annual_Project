@@ -71,6 +71,8 @@ int Game::run (sf::RenderWindow *app){
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 			{
+				if (m_player->getOrientation()!=4&&m_player->getOrientation()!=5&&m_player->getOrientation()!=3)
+					m_player->setOrientation(4);
 				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
 				m_vueHaute->Move(-m_deplacement, 0);
 				m_minimap->Move(-m_deplacement, 0);
@@ -78,6 +80,8 @@ int Game::run (sf::RenderWindow *app){
 				m_player->move(sf::Keyboard::Left, m_deplacement);
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)|| sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+				if (m_player->getOrientation()!=6&&m_player->getOrientation()!=7&&m_player->getOrientation()!=8)
+					m_player->setOrientation(7);
 				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
 				m_vueHaute->Move(m_deplacement, 0);
 				m_minimap->Move(m_deplacement, 0);
@@ -86,6 +90,8 @@ int Game::run (sf::RenderWindow *app){
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 			{
+				if (m_player->getOrientation()!=9&&m_player->getOrientation()!=10&&m_player->getOrientation()!=11)
+					m_player->setOrientation(10);
 				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
 				m_vueHaute->Move(0, -m_deplacement);
 				m_minimap->Move(0, -m_deplacement);
@@ -94,6 +100,8 @@ int Game::run (sf::RenderWindow *app){
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)|| sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 			{
+				if (m_player->getOrientation()!=0&&m_player->getOrientation()!=1&&m_player->getOrientation()!=2)
+					m_player->setOrientation(1);
 				m_deplacement=Collision::getCollision((Creature*)m_player,m_map,m_deplacement);
 				m_vueHaute->Move(0, m_deplacement);
 				m_minimap->Move(0, m_deplacement);
