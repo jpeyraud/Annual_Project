@@ -35,7 +35,7 @@ Game::Game (sf::RenderWindow *app)
 	m_affichageHaut=new HUD(true, m_visibility, m_spawnX, m_spawnY);
 	m_affichageBas=new HUD(false, m_visibility, m_spawnX, m_spawnY);
 	int i=0;
-	m_player=new Player(0, 0, 5, 100, 100, 30, "Lulu", "character.png", m_spawnX, m_spawnY);
+	m_player=new Player(0, 0, 5, 100, 100, 30, "Lulu", "player.png", m_spawnX, m_spawnY);
 	m_monster = new Monster(1, 5, "Loup", "character.png", m_spawnX, m_spawnY,96,0);
 	int tile;
 
