@@ -39,9 +39,12 @@ private:
 	bool m_Pos;
 	sf::Font m_font;
 	int m_characterSize;
-	sf::RectangleShape m_background;
-	sf::RectangleShape m_background_left;
-	sf::RectangleShape m_background_right;
+	sf::Sprite m_background;
+	sf::IntRect* m_texturRect_background;
+	sf::Sprite m_background_left;
+	sf::IntRect* m_texturRect_background_left;
+	sf::Sprite m_background_right;
+	sf::IntRect* m_texturRect_background_right;
 	sf::RectangleShape m_barreDeVie_contour;
 	sf::RectangleShape m_barreDeVie;
 	sf::RectangleShape m_Button_1;
@@ -52,6 +55,8 @@ private:
 	sf::VertexArray m_vertices;
 	sf::Texture m_tileset;
 	sf::Texture m_background_texture;
+	sf::Texture m_background_texture_right;
+	sf::Texture m_background_texture_left;
 	sf::Texture m_Life_bound;
 	sf::Texture m_foods_texture;
 	sf::Texture m_potions_texture;

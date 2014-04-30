@@ -22,6 +22,8 @@ public:
 private:
 	sf::View m_vue;
 	sf::View m_vuehaute;
+;
+
 
 };
 

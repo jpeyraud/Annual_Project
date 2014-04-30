@@ -28,15 +28,12 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 	m_hud.setSize(sf::Vector2f(m_visibility.x, m_visibility.y));//En fonction de la visibility pour l'utilisé dans la taille des charactères.
 
 
-	//Background de l'HUD
-	m_background_texture.loadFromFile("stoneMenuFond.jpg");//La texture
-	m_background_texture.setRepeated(true);
-	m_button_texture.loadFromFile("button_texture.png");
+
 
 	//Le contenant (taille en fonctionde de la visibility)
 	//Position du point supèrieure gauche du contenant
 	m_coord= new Coordonate(spawnX-(m_visibility.x/2),spawnY-(m_visibility.y/2));//centre de la vue moins moitiers de la longueur du contenant.
-																		 //centre de la vue moins la moitier de la hauteur du contenant.
+	//centre de la vue moins la moitier de la hauteur du contenant.
 
 
 	//On commence par charger la police de texte
@@ -64,9 +61,17 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 	 * les deux dernier sont ses dimension x et y.
 	 */
 	if(m_Pos){
-		m_background=sf::RectangleShape(sf::Vector2f(m_visibility.x, m_visibility.y));
+
+		//Background de l'HUD
+		m_background_texture.loadFromFile("HUDtexture.png");//La texture
+		m_background_texture.setRepeated(true);
+		m_button_texture.loadFromFile("button_texture.png");
+
+
+		m_texturRect_background= new sf::IntRect(0,0,m_visibility.x, m_visibility.y);
 		m_background.setPosition(m_coord->getCoordonate()[0], m_coord->getCoordonate()[1]);//On définit la position.
-		m_background.setTexture(&m_background_texture);//et la texture
+		m_background.setTexture(m_background_texture);//et la texture
+		m_background.setTextureRect(*m_texturRect_background);
 
 		m_hud.setViewport(sf::FloatRect(0, 0, 1, 0.15f));
 
@@ -148,13 +153,26 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 
 	}
 	else{
-		m_background_left=sf::RectangleShape(sf::Vector2f(m_visibility.x*0.45, m_visibility.y));
-		m_background_left.setPosition(m_coord->getCoordonate()[0], m_coord->getCoordonate()[1]);//On définit la position.
-		m_background_left.setTexture(&m_background_texture);//et la texture
 
-		m_background_right=sf::RectangleShape(sf::Vector2f(m_visibility.x*0.40, m_visibility.y));
+		//Background de l'HUD
+		m_background_texture_left.loadFromFile("HUDTexture_left.png");//La texture
+		m_background_texture_left.setRepeated(true);
+
+
+		m_texturRect_background_left=new sf::IntRect(0,0,m_visibility.x*0.45, m_visibility.y);
+		m_background_left.setPosition(m_coord->getCoordonate()[0], m_coord->getCoordonate()[1]);//On définit la position.
+		m_background_left.setTexture(m_background_texture_left);//et la texture
+		m_background_left.setTextureRect(*m_texturRect_background_left);
+
+		//Background de l'HUD
+		m_background_texture_right.loadFromFile("HUDTexture_right.png");//La texture
+		m_background_texture_right.setRepeated(true);
+
+
+		m_texturRect_background_right= new sf::IntRect(0,0,m_visibility.x*0.40, m_visibility.y);
 		m_background_right.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.60, m_coord->getCoordonate()[1]);//On définit la position.
-		m_background_right.setTexture(&m_background_texture);//et la texture
+		m_background_right.setTexture(m_background_texture_right);//et la texture
+		m_background_right.setTextureRect(*m_texturRect_background_right);
 
 		m_Power.setFont(m_font);//Assignation police.
 		m_Power.setCharacterSize(m_characterSize);//Assignation taille (en fonction de la visibility).
@@ -289,4 +307,4 @@ void HUD::Draw(sf::RenderWindow* window, Player* player)
 }
 
 
- /* namespace std */
+/* namespace std */
