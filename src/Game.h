@@ -47,6 +47,7 @@ private:
 	int m_spawnX;
 	int m_spawnY;
 	vector<int> m_level;
+	vector<int> m_level2;
 	sf::Vector2u m_visibility;
 	sf::Clock m_clock_speed;
 	sf::Clock m_clock_monster;

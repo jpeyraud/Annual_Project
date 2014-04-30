@@ -18,7 +18,7 @@ Player::Player(int toughness, int agility, int power, int weapon, int armor, flo
 	m_tabOrientation[9] = sf::IntRect(0,144,32,48);
 	m_tabOrientation[10] = sf::IntRect(32,144,32,48);
 	m_tabOrientation[11] = sf::IntRect(64,144,32,48);
-	m_texture.loadFromFile(image, sf::IntRect(0,0,96,192));
+	m_texture.loadFromFile(image, sf::IntRect(0,0,192,192));
 	m_S_orientation.setTexture(m_texture);
 	m_S_orientation.setTextureRect(m_tabOrientation[1]);
 	m_S_orientation.setPosition(posx, posy);

@@ -7,6 +7,7 @@
 #include <SFML/System.hpp>
 #include <iostream>
 #include "Coordonate.h"
+#include <vector>
 
 namespace
 {
@@ -21,12 +22,14 @@ class Map : public sf::Drawable, public sf::Transformable
 
 public:
 
-    bool load(const string& tileset, sf::Vector2u tileSize, vector<int> tiles, unsigned int width, unsigned int height);
+    bool load(const string& tileset, sf::Vector2u tileSize, vector<int> tiles,vector<int> tiles2, unsigned int width, unsigned int height);
     void setObstacle(Coordonate* coord);
-    void Map::setSpiteObstacle (sf::Sprite sp);
+    void Map::setObstacle(int x, int y);
+    void setSpriteObstacle (sf::Sprite sp);
     bool **getMapObstacle();
     int getWidth();
     int getHeight();
+    vector<sf::Sprite> getSprites();
 
 private:
 
@@ -37,6 +40,7 @@ private:
     bool** m_mapObstacle;
     int m_width;
     int m_height;
+    vector<sf::Sprite> m_vectSprite;
 
 
 };

@@ -24,6 +24,7 @@ Game::Game (sf::RenderWindow *app)
 	m_movement_step = 5;
 	m_coord= new Coordonate(320,240);
 	ifstream mapFile("map.txt");
+	ifstream superFile("super.txt");
 	mapFile >> m_tailleMap;
 	mapFile >> m_spawnX;
 	mapFile >> m_spawnY;
@@ -35,7 +36,7 @@ Game::Game (sf::RenderWindow *app)
 	m_affichageHaut=new HUD(true, m_visibility, m_spawnX, m_spawnY);
 	m_affichageBas=new HUD(false, m_visibility, m_spawnX, m_spawnY);
 	int i=0;
-	m_player=new Player(0, 0, 5, 100, 100, 30, "Lulu", "player.png", m_spawnX, m_spawnY);
+	m_player=new Player(0, 0, 5, 100, 100, 30, "Lulu", "playerAttack.png", m_spawnX, m_spawnY);
 	m_monster = new Monster(1, 5, "Loup", "character.png", m_spawnX, m_spawnY,96,0);
 	int tile;
 
@@ -45,11 +46,17 @@ Game::Game (sf::RenderWindow *app)
 		m_level.push_back(tile);
 		i++;
 	}
+	i=0;
+	while(i<m_tailleMap)
+	{
+		superFile >> tile;
+		m_level2.push_back(tile);
+		i++;
+	}
 
 	// on crée la tilemap avec le niveau défini dans map.txt
 
-	m_map.load("tilea4.png", sf::Vector2u(32, 32), m_level, 64, 32);
-
+	m_map.load("tiles.png", sf::Vector2u(32, 32), m_level,m_level2, 64, 32);
 
 
 
@@ -64,6 +71,7 @@ int Game::run (sf::RenderWindow *app){
 	float deplacement;
 	Running = true;
 	m_Music.play();
+	vector <sf::Sprite>vectSprite=m_map.getSprites();
 	while(Running){
 
 		while (app->isOpen())
@@ -139,6 +147,7 @@ int Game::run (sf::RenderWindow *app){
 			m_vueHaute->Draw(app, m_map);
 			app->draw(m_player->getSprite());
 			app->draw(m_monster->getSprite());
+
 			m_affichageBas->Draw(app, m_player);
 			m_affichageHaut->Draw(app, m_player);
 			m_minimap->Draw(app, m_map);

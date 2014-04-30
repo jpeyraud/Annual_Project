@@ -23,7 +23,7 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 	if (character->getOrientation()/3==0)//sud
 	{
 		for(int i=0;i<=int(speed);i++){
-			if (top+i+height==1023){
+			if (top+i+height==map.getHeight()-1){
 				speed=float(i);
 				break;
 			}
@@ -102,7 +102,7 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 	else if(character->getOrientation()/3==2)//est
 	{
 		for(int i=0;i<=int(speed);i++){
-			if (left+i+width==2047){
+			if (left+i+width==map.getWidth()-1){
 				speed=float(i);
 				break;
 			}

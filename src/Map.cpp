@@ -9,12 +9,17 @@
 
 
 
-bool Map::load(const string& tileset, sf::Vector2u tileSize,  vector<int> tiles, unsigned int width, unsigned int height)
+bool Map::load(const string& tileset, sf::Vector2u tileSize,  vector<int> tiles, vector<int> tiles2, unsigned int width, unsigned int height)
 {
+	m_width=width*32;
+	m_height=height*32;
+	loadObstacle();
+	sf::Sprite sprite;
 	// on charge la texture du tileset
 	if (!m_tileset.loadFromFile(tileset))
 		return false;
 
+	sprite.setTexture(m_tileset);
 	// on redimensionne le tableau de vertex pour qu'il puisse contenir tout le niveau
 	m_vertices.setPrimitiveType(sf::Quads);
 	m_vertices.resize(width * height * 4);
@@ -25,6 +30,7 @@ bool Map::load(const string& tileset, sf::Vector2u tileSize,  vector<int> tiles,
 		{
 			// on récupère le numéro de tuile courant
 			int tileNumber = tiles[i + j * width];
+			int tileNumber2 = tiles2[i + j * width];
 
 			// on en déduit sa position dans la texture du tileset
 			int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
@@ -44,11 +50,18 @@ bool Map::load(const string& tileset, sf::Vector2u tileSize,  vector<int> tiles,
 			quad[1].texCoords = sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
 			quad[2].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
 			quad[3].texCoords = sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
+
+			if (tileNumber2!=-1){
+				int colonne=(tileNumber2%6)*32;
+				int ligne= (tileNumber2/6)*32;
+				sprite.setTextureRect(sf::IntRect(colonne,ligne,32,32));
+				sprite.setPosition(i * tileSize.x, j * tileSize.y);
+				m_vectSprite.push_back(sprite);
+				setSpriteObstacle(sprite);
+			}
 		}
 
-	m_width=width;
-	m_height=height;
-	loadObstacle();
+
 	return true;
 }
 
@@ -65,21 +78,25 @@ void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	// et on dessine enfin le tableau de vertex
 	target.draw(m_vertices, states);
+
+	for (int i=0;i<m_vectSprite.size();i++){
+		target.draw(m_vectSprite[i],states);
+	}
 }
 
 void Map::loadObstacle(){
-	m_mapObstacle=new bool*[1024];
-	for (int i=0;i<1024;i++){
-		m_mapObstacle[i]=new bool[2048];
+	m_mapObstacle=new bool*[m_height];
+	for (int i=0;i<m_height;i++){
+		m_mapObstacle[i]=new bool[m_width];
 	}
-	for (int i=0;i<1024;i++){
-		for (int j=0;j<2048;j++){
+	for (int i=0;i<m_height;i++){
+		for (int j=0;j<m_width;j++){
 			m_mapObstacle[i][j]=0;
 		}
 	}
 }
 
-void Map::setSpiteObstacle (sf::Sprite sp){
+void Map::setSpriteObstacle (sf::Sprite sp){
 	int top = sp.getGlobalBounds().top;
 	int left = sp.getGlobalBounds().left;
 	int width = sp.getGlobalBounds().width;
@@ -87,7 +104,7 @@ void Map::setSpiteObstacle (sf::Sprite sp){
 
 	for (int x=top;x<top+height;x++){
 		for (int y=left;y<left+width;y++){
-			setObstacle(new Coordonate(x,y));
+			setObstacle(x,y);
 		}
 	}
 }
@@ -96,6 +113,13 @@ void Map::setSpiteObstacle (sf::Sprite sp){
 void Map::setObstacle(Coordonate *coord){
 	if(coord->getCoordonate()[0]<m_width && coord->getCoordonate()[1]<m_height){
 		m_mapObstacle[coord->getCoordonate()[0]][coord->getCoordonate()[1]]=1;
+	}
+
+}
+
+void Map::setObstacle(int x, int y){
+	if(x<m_width && y<m_height){
+		m_mapObstacle[x][y]=1;
 	}
 
 }
@@ -111,6 +135,10 @@ int Map::getWidth(){
 
 int Map::getHeight(){
 	return m_height;
+}
+
+vector<sf::Sprite> Map::getSprites(){
+	return m_vectSprite;
 }
 
 
