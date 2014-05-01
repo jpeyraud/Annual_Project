@@ -130,18 +130,21 @@ int Menu::run (sf::RenderWindow* app)
 						m_ButtonClick.play();
 						nextScreen = 0;
 						Running = false;
+						Sleep(300.0);
 					}
 					if (hitTest( (sf::FloatRect) m_spriteOption.getGlobalBounds(), m_width, m_height,  mouse))
 					{
 						m_ButtonClick.play();
 						nextScreen = 2;
 						Running = false;
+						Sleep(300.0);
 					}
 					if (hitTest( (sf::FloatRect) m_spriteExit.getGlobalBounds(), m_width, m_height,  mouse))
 					{
 						m_ButtonClick.play();
 						nextScreen = -1;
 						Running = false;
+						Sleep(300.0);
 					}
 				}
 			}
