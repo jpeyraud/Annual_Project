@@ -69,6 +69,7 @@ Game::~Game()
 
 int Game::run (sf::RenderWindow *app){
 	float deplacement;
+	int index = 0;
 	Running = true;
 	m_Music.play();
 	vector <sf::Sprite>vectSprite=m_map.getSprites();
@@ -92,6 +93,14 @@ int Game::run (sf::RenderWindow *app){
 				}
 			}
 
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+				m_player->basicAttack(index);
+				if(index == 3){
+					index = 0;
+				}
+				else
+					index++;
+			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 			{
 				if (m_player->getOrientation()!=4&&m_player->getOrientation()!=5&&m_player->getOrientation()!=3)

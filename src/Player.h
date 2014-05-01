@@ -12,7 +12,7 @@ class Player : public Creature
 public:
 	Player(int toughness, int agility, int power, int weapon, int armor, float protectionTime, string name, string image, int posx, int posy);
 	void move(sf::Keyboard::Key direction, float mvt);
-	void basicAttack();
+	void basicAttack(int index);
 	void specialAttack();
 	void levelUp();
 	int getAgility() const;

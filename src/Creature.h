@@ -36,7 +36,7 @@ protected :
 	// position of Creature
 	Coordonate m_position;
 	// Each box corresponds to an image of Creature
-	sf::IntRect m_tabOrientation[12];
+	sf::IntRect m_tabOrientation[24];
 	sf::Texture m_texture;
 	sf::Sprite m_S_orientation;
 	// Give the orientation of Creature
