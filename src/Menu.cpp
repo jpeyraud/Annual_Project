@@ -24,34 +24,22 @@ Menu::Menu (sf::RenderWindow* app)
 	// -------------------    Loading Font & Texture    ------------------- //
 	if (!m_textFont.loadFromFile("BLKCHCRY.ttf"))  //Sketch Gothic School
 	{
-		cout << "error fontMenu" << endl;
+		std::cout << "error fontMenu" << std::endl;
 	}
 	if (!m_textureMenuButton.loadFromFile("MenuButtonTexture.png"))
 	{
-		cout << "error texturePlay button" << endl;
+		std::cout << "error texturePlay button" << std::endl;
 	}
 	if (!m_textureMenuFond.loadFromFile("stoneMenuFond.jpg"))
 	{
-		cout << "error textureMenuFond button" << endl;
+		std::cout << "error textureMenuFond button" << std::endl;
 	}
 
 	// -------------------    Loading Sound & Music    ------------------- //
 	if (!m_Music.openFromFile("DST-3rdBallad.ogg"))
 	{
-		cout << "error openning music menu" << endl;
+		std::cout << "error openning music menu" << std::endl;
 	}
-	if (!m_ButtonBip.openFromFile("DST-button-bip.ogg"))
-	{
-		cout << "error openning music button menu" << endl;
-	}
-	if (!m_ButtonClick.openFromFile("DST-button-click.ogg"))
-	{
-		cout << "error openning music button menu" << endl;
-	}
-	m_ButtonClick.setVolume(20);
-	m_ButtonClick.setLoop(false);
-	m_ButtonBip.setVolume(20);
-	m_ButtonBip.setLoop(false);
 	m_Music.setVolume(20);
 	m_Music.setLoop(true);
 

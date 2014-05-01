@@ -15,11 +15,16 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
 #include <fstream>
 #include "cScreen.cpp"
 #include "Coordonate.h"
 
-
+namespace
+{
+	using std::cout;
+	using std::endl;
+}
 
 class Option : public cScreen
 {
@@ -30,6 +35,9 @@ private:
 	sf::RectangleShape m_filtreTransparant;
 	sf::CircleShape m_rond;
 	Coordonate *m_coord;
+	sf::Music m_Music;
+	sf::Font m_textFont;
+	sf::Text m_textNotImplemented;
 	//sf::Sprite Sprite;
 
 public:

@@ -1,3 +1,4 @@
+
 /*
  * Menu.h
  *
@@ -70,3 +71,5 @@ public:
 	bool hitTest(sf::FloatRect rect, int height, int width, sf::Vector2i mouse);
 
 };
+
+#endif /* MENU_H_ */
