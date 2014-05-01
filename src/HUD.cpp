@@ -14,7 +14,10 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 	m_Pos=posi;
 	m_visibility=visi;
 	m_visibility.y=m_visibility.y*0.15;
+	std::cout << m_visibility.y;
 	m_characterSize=m_visibility.y*0.20;
+	m_spawnX=spawnX;
+	m_spawnY=spawnY;
 	/*
 	 * Elements commun au deux HUD :
 	 * La position de la vue (monde 2D)
@@ -142,15 +145,23 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 			}
 
 
-		m_Button_1=sf::RectangleShape(sf::Vector2f(m_visibility.x*0.20, m_visibility.y*0.40));
-		m_Button_1.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.50, m_coord->getCoordonate()[1]+m_visibility.y*0.08);//On définit la position.
-		m_Button_1.setTexture(&m_button_texture);//et la texture
 
-		m_Button_2=sf::RectangleShape(sf::Vector2f(m_visibility.x*0.20, m_visibility.y*0.40));
-		m_Button_2.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.50, m_coord->getCoordonate()[1]+m_visibility.y*0.48);//On définit la position.
-		m_Button_2.setTexture(&m_button_texture);//et la texture
+		m_option.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.50, m_coord->getCoordonate()[1]+m_visibility.y*0.08);//On définit la position.
+		m_option.setTexture(m_button_texture);//et la texture
 
 
+
+		m_menu.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.50, m_coord->getCoordonate()[1]+m_visibility.y*0.48);//On définit la position.
+		m_menu.setTexture(m_button_texture);//et la texture
+
+		// -------------------    Text    ------------------- //
+		//		m_menu= sf::Text("MENU", m_font, m_characterSize);
+		//		m_option= sf::Text("OPTION", m_font, m_characterSize);
+
+		m_inside_option=new sf::IntRect(10,10,m_width,m_height);
+		m_option.setTextureRect(*m_inside_option);
+		m_inside_menu=new sf::IntRect(10,10,m_width,m_height);
+		m_menu.setTextureRect(*m_inside_menu);
 	}
 	else{
 
@@ -264,8 +275,8 @@ void HUD::Draw(sf::RenderWindow* window, Player* player)
 		m_reserve.setString("Reserve : ");
 		window->draw(m_reserve);
 		window->draw(m_vertices, &m_tileset);
-		window->draw(m_Button_1);
-		window->draw(m_Button_2);
+		window->draw(m_option);
+		window->draw(m_menu);
 	}
 	else{
 		window->draw(m_background_left);
@@ -306,5 +317,23 @@ void HUD::Draw(sf::RenderWindow* window, Player* player)
 	}
 }
 
-
+sf::FloatRect HUD::getOption(){
+	sf::FloatRect Bounds=m_option.getGlobalBounds();
+	//	std::cout << m_spawnY << " " << m_coord->getCoordonate()[1] << std::endl;
+	Bounds.top=Bounds.top-m_coord->getCoordonate()[1];
+	Bounds.left=Bounds.left-m_coord->getCoordonate()[0];
+	return Bounds;
+}
+sf::FloatRect HUD::getMenu(){
+	sf::FloatRect Bounds=m_menu.getGlobalBounds();
+	Bounds.top=Bounds.top-m_coord->getCoordonate()[1];
+	Bounds.left=Bounds.left-m_coord->getCoordonate()[0];
+	return Bounds;
+}
+int HUD::getHeight(){
+	return m_height;
+}
+int HUD::getWidth(){
+	return m_width;
+}
 /* namespace std */

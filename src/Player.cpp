@@ -18,6 +18,20 @@ Player::Player(int toughness, int agility, int power, int weapon, int armor, flo
 	m_tabOrientation[9] = sf::IntRect(0,144,32,48);
 	m_tabOrientation[10] = sf::IntRect(32,144,32,48);
 	m_tabOrientation[11] = sf::IntRect(64,144,32,48);
+
+	m_tabOrientation[12] = sf::IntRect(96,0,32,48);
+	m_tabOrientation[13] = sf::IntRect(128,0,32,48);
+	m_tabOrientation[14] = sf::IntRect(160,0,32,48);
+	m_tabOrientation[15] = sf::IntRect(96,48,32,48);
+	m_tabOrientation[16] = sf::IntRect(128,48,32,48);
+	m_tabOrientation[17] = sf::IntRect(160,48,32,48);
+	m_tabOrientation[18] = sf::IntRect(96,96,32,48);
+	m_tabOrientation[19] = sf::IntRect(128,96,32,48);
+	m_tabOrientation[20] = sf::IntRect(160,96,32,48);
+	m_tabOrientation[21] = sf::IntRect(96,144,32,48);
+	m_tabOrientation[22] = sf::IntRect(128,144,32,48);
+	m_tabOrientation[23] = sf::IntRect(160,144,32,48);
+
 	m_texture.loadFromFile(image, sf::IntRect(0,0,192,192));
 	m_S_orientation.setTexture(m_texture);
 	m_S_orientation.setTextureRect(m_tabOrientation[1]);
@@ -175,9 +189,23 @@ void Player::move(sf::Keyboard::Key direction, float mvt)
 	}
 }
 
-void Player::basicAttack()
+void Player::basicAttack(int index)
 {
-	throw "Not yet implemented";
+	if(m_orientation == 0 || m_orientation == 1 || m_orientation == 2){
+		setSprite(12 + index);
+	}
+
+	else if(m_orientation == 3 || m_orientation == 4 || m_orientation == 5){
+		setSprite(15 + index);
+	}
+
+	else if(m_orientation == 6 || m_orientation == 7 || m_orientation == 8){
+		setSprite(18 + index);
+	}
+
+	else if(m_orientation == 9 || m_orientation == 10 || m_orientation == 11){
+		setSprite(21 + index);
+	}
 }
 
 void Player::specialAttack()

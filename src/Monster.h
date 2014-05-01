@@ -11,7 +11,8 @@ class Monster : public Creature
 protected:
 	int m_coeffpower;
 	int m_id;
-
+	int m_direction;
+	int m_nb_mvt;
 public:
 	Monster(int id, int coeffpower, string name, string image, int posx, int posy, int xDepart, int yDepart);
 	void move(float mvt);

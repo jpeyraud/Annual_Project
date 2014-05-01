@@ -12,6 +12,7 @@
 #include <cmath>
 #include <fstream>
 #include <SFML/Audio.hpp>
+#include "Menu.h"
 #include "cScreen.cpp"
 #include "HighView.h"
 #include "HUD.h"
@@ -63,6 +64,7 @@ public:
 	Game (sf::RenderWindow *app);
 	virtual ~Game();
 	int run (sf::RenderWindow *app);
+	bool hitTest(sf::FloatRect rect, int height, int width, sf::Vector2i mouse);
 
 };
 
