@@ -37,7 +37,7 @@ Game::Game (sf::RenderWindow *app)
 	m_affichageBas=new HUD(false, m_visibility, m_spawnX, m_spawnY);
 	int i=0;
 	m_player=new Player(0, 0, 5, 100, 100, 30, "Lulu", "playerAttack.png", m_spawnX, m_spawnY);
-	m_monster = new Monster(1, 5, "Loup", "character.png", m_spawnX, m_spawnY,96,0);
+	m_monster = new Monster(1, 5, "Loup", "wolf.png", m_spawnX, m_spawnY,0,0);
 	int tile;
 
 	while(i<m_tailleMap)
@@ -72,8 +72,11 @@ int Game::run (sf::RenderWindow *app){
 	Running = true;
 	m_Music.play();
 	vector <sf::Sprite>vectSprite=m_map.getSprites();
+	sf::Vector2i mouse = sf::Mouse::getPosition(*(sf::Window*) app);
 	while(Running){
 
+
+		mouse = sf::Mouse::getPosition(*(sf::Window*) app);
 		while (app->isOpen())
 		{
 
@@ -90,6 +93,37 @@ int Game::run (sf::RenderWindow *app){
 					m_Music.stop();
 					return 1;
 				}
+
+				//Les Boutton de l'interface
+				if (event.type == sf::Event::MouseButtonPressed)
+				{
+					//change Screen
+					if (event.mouseButton.button == sf::Mouse::Left)
+					{
+
+						mouse = sf::Mouse::getPosition(*(sf::Window*) app);
+						//On button click
+						if (hitTest( (sf::FloatRect) m_affichageHaut->getOption(), m_affichageHaut->getWidth(), m_affichageHaut->getHeight(),  mouse))
+						{
+							Running = false;
+							return 2;
+						}
+						if (hitTest( (sf::FloatRect) m_affichageHaut->getMenu(), m_affichageHaut->getWidth(), m_affichageHaut->getHeight(),  mouse))
+						{
+							Running = false;
+							return 1;
+						}
+
+
+						cout << "Top : " << m_affichageHaut->getOption().top << endl;
+						cout << "left : " << m_affichageHaut->getOption().left << endl;
+						cout << "height : " << m_affichageHaut->getOption().height << endl;
+						cout << "width : " << m_affichageHaut->getOption().width << endl;
+						cout << mouse.x << " " << mouse.y << endl;
+					}
+				}
+
+
 			}
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
@@ -138,7 +172,7 @@ int Game::run (sf::RenderWindow *app){
 				return 1;
 			}
 			m_elapsed_monster=m_clock_monster.getElapsedTime().asSeconds();
-			if(m_elapsed_monster>0.15){
+			if(m_elapsed_monster>0.20){
 				deplacement=Collision::getCollision((Creature *)m_monster,m_map,m_deplacement);
 				m_monster->move(deplacement);
 				m_clock_monster.restart();
@@ -161,4 +195,8 @@ int Game::run (sf::RenderWindow *app){
 	return -1;
 }
 
-
+bool Game::hitTest(sf::FloatRect rect, int height, int width, sf::Vector2i mouse)
+{
+	return (mouse.x > rect.left) && (mouse.x < rect.left + height) &&
+			(mouse.y > rect.top)  && (mouse.y < rect.top + width);
+}
