@@ -18,6 +18,7 @@
 #include <SFML/System.hpp>
 #include <SFML/Audio.hpp>
 #include <fstream>
+#include <windows.h>
 #include "cScreen.cpp"
 #include "Coordonate.h"
 
@@ -57,6 +58,10 @@ private:
 	sf::IntRect* m_insideSpriteMenuFond;
 	sf::View m_DefaultView;
 	sf::Music m_Music;
+	sf::Music m_ButtonBip;
+	bool inButtonPlay;
+	bool inButtonOption;
+	bool inButtonExit;
 
 public:
 	Menu (sf::RenderWindow* App);
