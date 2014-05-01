@@ -17,6 +17,9 @@ Menu::Menu (sf::RenderWindow* app)
 	m_DefaultView=m_app->getDefaultView();
 	m_movementStep = 5;
 	m_coord = new Coordonate(320,240);
+	inButtonPlay = false;
+	inButtonOption = false;
+	inButtonExit = false;
 
 	// -------------------    Loading Font & Texture    ------------------- //
 	if (!m_textFont.loadFromFile("BLKCHCRY.ttf"))  //Sketch Gothic School
@@ -37,6 +40,18 @@ Menu::Menu (sf::RenderWindow* app)
 	{
 		cout << "error openning music menu" << endl;
 	}
+	if (!m_ButtonBip.openFromFile("DST-button-bip.ogg"))
+	{
+		cout << "error openning music button menu" << endl;
+	}
+	if (!m_ButtonClick.openFromFile("DST-button-click.ogg"))
+	{
+		cout << "error openning music button menu" << endl;
+	}
+	m_ButtonClick.setVolume(20);
+	m_ButtonClick.setLoop(false);
+	m_ButtonBip.setVolume(20);
+	m_ButtonBip.setLoop(false);
 	m_Music.setVolume(20);
 	m_Music.setLoop(true);
 
@@ -112,18 +127,24 @@ int Menu::run (sf::RenderWindow* app)
 					//On button click
 					if (hitTest( (sf::FloatRect) m_spritePlay.getGlobalBounds(), m_width, m_height,  mouse))
 					{
+						m_ButtonClick.play();
 						nextScreen = 0;
 						Running = false;
+						Sleep(300.0);
 					}
 					if (hitTest( (sf::FloatRect) m_spriteOption.getGlobalBounds(), m_width, m_height,  mouse))
 					{
+						m_ButtonClick.play();
 						nextScreen = 2;
 						Running = false;
+						Sleep(300.0);
 					}
 					if (hitTest( (sf::FloatRect) m_spriteExit.getGlobalBounds(), m_width, m_height,  mouse))
 					{
+						m_ButtonClick.play();
 						nextScreen = -1;
 						Running = false;
+						Sleep(300.0);
 					}
 				}
 			}
@@ -133,26 +154,44 @@ int Menu::run (sf::RenderWindow* app)
 		//Hoover sprite or not
 		if (hitTest( (sf::FloatRect) m_spritePlay.getGlobalBounds(), m_width, m_height,  mouse))
 		{
+			if (!inButtonPlay)
+			{
+				m_ButtonBip.play();
+			}
+			inButtonPlay = true;
 			m_insideSpritePlay = new sf::IntRect(0,m_height,m_width,m_height);
 		}
 		else
 		{
+			inButtonPlay = false;
 			m_insideSpritePlay = new sf::IntRect(0,0,m_width,m_height);
 		}
 		if (hitTest( (sf::FloatRect) m_spriteOption.getGlobalBounds(), m_width, m_height,  mouse))
 		{
+			if (!inButtonOption)
+			{
+				m_ButtonBip.play();
+			}
+			inButtonOption = true;
 			m_insideSpriteOption = new sf::IntRect(0,m_height,m_width,m_height);
 		}
 		else
 		{
+			inButtonOption = false;
 			m_insideSpriteOption = new sf::IntRect(0,0,m_width,m_height);
 		}
 		if (hitTest( (sf::FloatRect) m_spriteExit.getGlobalBounds(), m_width, m_height,  mouse))
 		{
+			if (!inButtonExit)
+			{
+				m_ButtonBip.play();
+			}
+			inButtonExit = true;
 			m_insideSpriteExit = new sf::IntRect(0,m_height,m_width,m_height);
 		}
 		else
 		{
+			inButtonExit = false;
 			m_insideSpriteExit = new sf::IntRect(0,0,m_width,m_height);
 		}
 		m_spritePlay.setTextureRect(*m_insideSpritePlay);

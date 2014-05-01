@@ -1,4 +1,3 @@
-
 /*
  * Menu.h
  *
@@ -18,6 +17,7 @@
 #include <SFML/System.hpp>
 #include <SFML/Audio.hpp>
 #include <fstream>
+#include <windows.h>
 #include "cScreen.cpp"
 #include "Coordonate.h"
 
@@ -57,6 +57,11 @@ private:
 	sf::IntRect* m_insideSpriteMenuFond;
 	sf::View m_DefaultView;
 	sf::Music m_Music;
+	sf::Music m_ButtonBip;
+	sf::Music m_ButtonClick;
+	bool inButtonPlay;
+	bool inButtonOption;
+	bool inButtonExit;
 
 public:
 	Menu (sf::RenderWindow* App);
@@ -65,5 +70,3 @@ public:
 	bool hitTest(sf::FloatRect rect, int height, int width, sf::Vector2i mouse);
 
 };
-
-#endif /* MENU_H_ */
