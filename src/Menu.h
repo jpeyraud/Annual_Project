@@ -59,6 +59,7 @@ private:
 	sf::View m_DefaultView;
 	sf::Music m_Music;
 	sf::Music m_ButtonBip;
+	sf::Music m_ButtonClick;
 	bool inButtonPlay;
 	bool inButtonOption;
 	bool inButtonExit;

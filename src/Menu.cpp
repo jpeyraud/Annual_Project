@@ -44,6 +44,12 @@ Menu::Menu (sf::RenderWindow* app)
 	{
 		cout << "error openning music button menu" << endl;
 	}
+	if (!m_ButtonClick.openFromFile("DST-button-click.ogg"))
+	{
+		cout << "error openning music button menu" << endl;
+	}
+	m_ButtonClick.setVolume(20);
+	m_ButtonClick.setLoop(false);
 	m_ButtonBip.setVolume(20);
 	m_ButtonBip.setLoop(false);
 	m_Music.setVolume(20);
@@ -121,16 +127,19 @@ int Menu::run (sf::RenderWindow* app)
 					//On button click
 					if (hitTest( (sf::FloatRect) m_spritePlay.getGlobalBounds(), m_width, m_height,  mouse))
 					{
+						m_ButtonClick.play();
 						nextScreen = 0;
 						Running = false;
 					}
 					if (hitTest( (sf::FloatRect) m_spriteOption.getGlobalBounds(), m_width, m_height,  mouse))
 					{
+						m_ButtonClick.play();
 						nextScreen = 2;
 						Running = false;
 					}
 					if (hitTest( (sf::FloatRect) m_spriteExit.getGlobalBounds(), m_width, m_height,  mouse))
 					{
+						m_ButtonClick.play();
 						nextScreen = -1;
 						Running = false;
 					}
