@@ -191,20 +191,27 @@ void Player::move(sf::Keyboard::Key direction, float mvt)
 
 void Player::basicAttack(int index)
 {
-	if(m_orientation == 0 || m_orientation == 1 || m_orientation == 2){
-		setSprite(12 + index);
-	}
+	m_elapsed = m_frameclock.getElapsedTime().asSeconds();
 
-	else if(m_orientation == 3 || m_orientation == 4 || m_orientation == 5){
-		setSprite(15 + index);
-	}
+	if(m_elapsed > 0.15)
+	{
+		if(m_orientation == 0 || m_orientation == 1 || m_orientation == 2){
+			setSprite(12 + index);
+		}
 
-	else if(m_orientation == 6 || m_orientation == 7 || m_orientation == 8){
-		setSprite(18 + index);
-	}
+		else if(m_orientation == 3 || m_orientation == 4 || m_orientation == 5){
+			setSprite(15 + index);
+		}
 
-	else if(m_orientation == 9 || m_orientation == 10 || m_orientation == 11){
-		setSprite(21 + index);
+		else if(m_orientation == 6 || m_orientation == 7 || m_orientation == 8){
+			setSprite(18 + index);
+		}
+
+		else if(m_orientation == 9 || m_orientation == 10 || m_orientation == 11){
+			setSprite(21 + index);
+		}
+
+		m_frameclock.restart();
 	}
 }
 
