@@ -64,7 +64,7 @@ int Option::run(sf::RenderWindow *app)
 			if (Event.type == sf::Event::KeyPressed)
 			{
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return)){
-					return 1;
+					return 0;
 				}
 			}
 		}

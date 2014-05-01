@@ -22,8 +22,8 @@
 
 namespace
 {
-	using std::vector;
-	using std::stringstream;
+using std::vector;
+using std::stringstream;
 }
 
 class HUD
@@ -33,12 +33,18 @@ public:
 	HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY);
 	virtual ~HUD();
 	void Draw(sf::RenderWindow* window, Player* player);
+	sf::FloatRect getOption();
+	sf::FloatRect getMenu();
+	int getHeight();
+	int getWidth();
 
 private:
 	sf::View m_hud;
 	bool m_Pos;
 	sf::Font m_font;
 	int m_characterSize;
+	int m_spawnX;
+	int m_spawnY;
 	sf::Sprite m_background;
 	sf::IntRect* m_texturRect_background;
 	sf::Sprite m_background_left;
@@ -47,8 +53,12 @@ private:
 	sf::IntRect* m_texturRect_background_right;
 	sf::RectangleShape m_barreDeVie_contour;
 	sf::RectangleShape m_barreDeVie;
-	sf::RectangleShape m_Button_1;
-	sf::RectangleShape m_Button_2;
+	sf::Sprite m_option;
+	sf::IntRect* m_inside_option;
+	sf::Sprite m_menu;
+	sf::IntRect* m_inside_menu;
+	static const int m_height = 30;
+	static const int m_width = 140;
 	sf::RectangleShape m_Resource_1;
 	sf::RectangleShape m_Resource_2;
 	sf::RectangleShape m_Resource_3;
