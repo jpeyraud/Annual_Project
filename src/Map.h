@@ -9,6 +9,8 @@
 #include "Coordonate.h"
 #include <vector>
 
+#define TILE_SIZE 32;
+
 namespace
 {
 	using std::string;

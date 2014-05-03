@@ -54,9 +54,9 @@ Game::Game (sf::RenderWindow *app)
 		i++;
 	}
 
-	// on crée la tilemap avec le niveau défini dans map.txt
+	// on crée la tilemap avec le niveau défini dans map.txt et dans super.txt (contenant les sprites)
 
-	m_map.load("tiles.png", sf::Vector2u(32, 32), m_level,m_level2, 64, 32);
+	m_map.load("tiles.png", sf::Vector2u(32, 32), m_level,m_level2, 256, 128);
 
 
 
