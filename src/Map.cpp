@@ -57,7 +57,7 @@ bool Map::load(const string& tileset, sf::Vector2u tileSize,  vector<int> tiles,
 				sprite.setTextureRect(sf::IntRect(colonne,ligne,tileSize.x,tileSize.y));
 				sprite.setPosition(i * tileSize.x, j * tileSize.y);
 				m_vectSprite.push_back(sprite);
-				//setSpriteObstacle(sprite);
+				setSpriteObstacle(sprite);
 			}
 		}
 	}
@@ -96,10 +96,10 @@ void Map::loadObstacle(){
 }
 
 void Map::setSpriteObstacle (sf::Sprite sp){
-	int top = sp.getGlobalBounds().top;
-	int left = sp.getGlobalBounds().left;
-	int width = sp.getGlobalBounds().width;
-	int height = sp.getGlobalBounds().height;
+	int top = (int)round(sp.getGlobalBounds().top);
+	int left = (int)round(sp.getGlobalBounds().left);
+	int width = (int)round(sp.getGlobalBounds().width);
+	int height = (int)round(sp.getGlobalBounds().height);
 
 	for (int x=top;x<top+height;x++){
 		for (int y=left;y<left+width;y++){
@@ -117,7 +117,7 @@ void Map::setObstacle(Coordonate *coord){
 }
 
 void Map::setObstacle(int x, int y){
-	if(x<m_width && y<m_height){
+	if(x<m_width*32 && y<m_height*32){
 		m_mapObstacle[x][y]=1;
 	}
 

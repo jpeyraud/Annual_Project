@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Coordonate.h"
 #include <vector>
+#include "math.h"
 
 #define TILE_SIZE 32;
 
