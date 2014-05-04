@@ -27,7 +27,7 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 				speed=float(i);
 				break;
 			}
-			if(mapObstacle[top+i+height][left]==1){
+			if(mapObstacle[top+i+height][left]==1||mapObstacle[top+i+height][left+width]==1){
 				speed=float(i-1);
 				break;
 			}
@@ -53,7 +53,7 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 				speed=float(i);
 				break;
 			}
-			if(mapObstacle[top][left-i]==1){
+			if(mapObstacle[top+16][left-i]==1||mapObstacle[top+width][left-i]==1){
 				speed=float(i-1);
 				break;
 			}
@@ -80,7 +80,7 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 				speed=float(i);
 				break;
 			}
-			if(mapObstacle[top-i][left]==1){
+			if(mapObstacle[top-i+16][left]==1||mapObstacle[top-i+16][left+width]==1){
 				speed=float(i-1);
 				break;
 			}
@@ -106,8 +106,8 @@ float Collision::getCollision(Creature *character,Map map,float speed)
 				speed=float(i);
 				break;
 			}
-			if(mapObstacle[top][left+i+width]==1){
-				speed=float(i);
+			if(mapObstacle[top+16][left+i+width]==1||mapObstacle[top+height][left+i+width]==1){
+				speed=float(i-1);
 				break;
 			}
 		}

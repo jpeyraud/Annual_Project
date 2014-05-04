@@ -11,8 +11,8 @@
 
 bool Map::load(const string& tileset, sf::Vector2u tileSize,  vector<int> tiles, vector<int> tiles2, unsigned int width, unsigned int height)
 {
-	m_width=width*32;
-	m_height=height*32;
+	m_width=width*TILE_SIZE;
+	m_height=height*TILE_SIZE;
 	loadObstacle();
 	sf::Sprite sprite;
 	// on charge la texture du tileset
@@ -25,12 +25,12 @@ bool Map::load(const string& tileset, sf::Vector2u tileSize,  vector<int> tiles,
 	m_vertices.resize(width * height * 4);
 
 	// on remplit le tableau de vertex, avec un quad par tuile
-	for (unsigned int i = 0; i < width; ++i)
+	for (unsigned int i = 0; i < width; ++i){
 		for (unsigned int j = 0; j < height; ++j)
 		{
 			// on récupère le numéro de tuile courant
-			int tileNumber = tiles[i + j * width];
-			int tileNumber2 = tiles2[i + j * width];
+			int tileNumber = tiles[i + (j * width)];
+			int tileNumber2 = tiles2[i + (j * width)];
 
 			// on en déduit sa position dans la texture du tileset
 			int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
@@ -52,16 +52,15 @@ bool Map::load(const string& tileset, sf::Vector2u tileSize,  vector<int> tiles,
 			quad[3].texCoords = sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
 
 			if (tileNumber2!=-1){
-				int colonne=(tileNumber2%6)*32;
-				int ligne= (tileNumber2/6)*32;
-				sprite.setTextureRect(sf::IntRect(colonne,ligne,32,32));
+				int colonne= (tileNumber2%6)*TILE_SIZE;
+				int ligne= (tileNumber2/6)*TILE_SIZE;
+				sprite.setTextureRect(sf::IntRect(colonne,ligne,tileSize.x,tileSize.y));
 				sprite.setPosition(i * tileSize.x, j * tileSize.y);
 				m_vectSprite.push_back(sprite);
 				setSpriteObstacle(sprite);
 			}
 		}
-
-
+	}
 	return true;
 }
 
@@ -79,7 +78,7 @@ void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	// et on dessine enfin le tableau de vertex
 	target.draw(m_vertices, states);
 
-	for (int i=0;i<m_vectSprite.size();i++){
+	for (unsigned int i=0;i<m_vectSprite.size();i++){
 		target.draw(m_vectSprite[i],states);
 	}
 }
@@ -97,10 +96,10 @@ void Map::loadObstacle(){
 }
 
 void Map::setSpriteObstacle (sf::Sprite sp){
-	int top = sp.getGlobalBounds().top;
-	int left = sp.getGlobalBounds().left;
-	int width = sp.getGlobalBounds().width;
-	int height = sp.getGlobalBounds().height;
+	int top = (int)round(sp.getGlobalBounds().top);
+	int left = (int)round(sp.getGlobalBounds().left);
+	int width = (int)round(sp.getGlobalBounds().width);
+	int height = (int)round(sp.getGlobalBounds().height);
 
 	for (int x=top;x<top+height;x++){
 		for (int y=left;y<left+width;y++){
@@ -118,7 +117,7 @@ void Map::setObstacle(Coordonate *coord){
 }
 
 void Map::setObstacle(int x, int y){
-	if(x<m_width && y<m_height){
+	if(x<m_width*32 && y<m_height*32){
 		m_mapObstacle[x][y]=1;
 	}
 
