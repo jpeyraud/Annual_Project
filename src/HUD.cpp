@@ -148,12 +148,15 @@ HUD::HUD(bool posi, sf::Vector2u visi, float spawnX, float spawnY) {
 
 		m_option.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.50, m_coord->getCoordonate()[1]+m_visibility.y*0.08);//On définit la position.
 		m_option.setTexture(m_button_texture);//et la texture
-
-
+		m_text_option= sf::Text("Option", m_font, m_characterSize-2);
+		m_text_option.setPosition((m_coord->getCoordonate()[0]+m_visibility.x*0.50)+0.25*m_width, m_coord->getCoordonate()[1]+m_visibility.y*0.08);
+		m_text_option.setColor(sf::Color(0,0,0));
 
 		m_menu.setPosition(m_coord->getCoordonate()[0]+m_visibility.x*0.50, m_coord->getCoordonate()[1]+m_visibility.y*0.48);//On définit la position.
 		m_menu.setTexture(m_button_texture);//et la texture
-
+		m_text_menu= sf::Text("Menu", m_font, m_characterSize);
+		m_text_menu.setPosition((m_coord->getCoordonate()[0]+m_visibility.x*0.50)+0.25*m_width, m_coord->getCoordonate()[1]+m_visibility.y*0.48);
+		m_text_menu.setColor(sf::Color(0,0,0));
 		// -------------------    Text    ------------------- //
 		//		m_menu= sf::Text("MENU", m_font, m_characterSize);
 		//		m_option= sf::Text("OPTION", m_font, m_characterSize);
@@ -276,7 +279,9 @@ void HUD::Draw(sf::RenderWindow* window, Player* player)
 		window->draw(m_reserve);
 		window->draw(m_vertices, &m_tileset);
 		window->draw(m_option);
+		window->draw(m_text_option);
 		window->draw(m_menu);
+		window->draw(m_text_menu);
 	}
 	else{
 		window->draw(m_background_left);

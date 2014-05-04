@@ -55,8 +55,10 @@ private:
 	sf::RectangleShape m_barreDeVie;
 	sf::Sprite m_option;
 	sf::IntRect* m_inside_option;
+	sf::Text m_text_option;
 	sf::Sprite m_menu;
 	sf::IntRect* m_inside_menu;
+	sf::Text m_text_menu;
 	static const int m_height = 30;
 	static const int m_width = 140;
 	sf::RectangleShape m_Resource_1;
